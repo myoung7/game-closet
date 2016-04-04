@@ -17,6 +17,8 @@ class GiantBombClient {
     init() {
         session = NSURLSession.sharedSession()
     }
+    
+    static let sharedInstance = GiantBombClient()
 
     func taskForGETMethod(method method: String, parameters: [String: AnyObject], completionHandler: CompletionHander) {
         var mutableParameters = parameters

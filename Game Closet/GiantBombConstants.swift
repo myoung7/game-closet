@@ -27,7 +27,7 @@ extension GiantBombClient {
             return nil
         }
         
-        static let SecureBaseURL = "https://www.giantbomb.com/"
+        static let SecureBaseURL = "https://www.giantbomb.com/api/"
     }
     
     struct Methods {

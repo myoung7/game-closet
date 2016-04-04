@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		610039CE1CB239EF00060FE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039CD1CB239EF00060FE3 /* AppDelegate.swift */; };
-		610039D01CB239EF00060FE3 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039CF1CB239EF00060FE3 /* BrowseViewController.swift */; };
+		610039D01CB239EF00060FE3 /* BrowsePlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039CF1CB239EF00060FE3 /* BrowsePlatformViewController.swift */; };
 		610039D31CB239EF00060FE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610039D11CB239EF00060FE3 /* Main.storyboard */; };
 		610039D61CB239EF00060FE3 /* Game_Closet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 610039D41CB239EF00060FE3 /* Game_Closet.xcdatamodeld */; };
 		610039D81CB239EF00060FE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610039D71CB239EF00060FE3 /* Assets.xcassets */; };
@@ -19,12 +19,13 @@
 		610039E91CB25BAA00060FE3 /* GiantBombClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039E81CB25BAA00060FE3 /* GiantBombClient.swift */; };
 		610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */; };
 		610039ED1CB264C900060FE3 /* GiantBombConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */; };
+		610039EF1CB2E8B900060FE3 /* Game Closet Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 610039EE1CB2E8B900060FE3 /* Game Closet Data.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		610039CA1CB239EF00060FE3 /* Game Closet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Closet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		610039CD1CB239EF00060FE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		610039CF1CB239EF00060FE3 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		610039CF1CB239EF00060FE3 /* BrowsePlatformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsePlatformViewController.swift; sourceTree = "<group>"; };
 		610039D21CB239EF00060FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		610039D51CB239EF00060FE3 /* Game_Closet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Game_Closet.xcdatamodel; sourceTree = "<group>"; };
 		610039D71CB239EF00060FE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +37,7 @@
 		610039E81CB25BAA00060FE3 /* GiantBombClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombClient.swift; sourceTree = "<group>"; };
 		610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConstants.swift; sourceTree = "<group>"; };
 		610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConvenience.swift; sourceTree = "<group>"; };
+		610039EE1CB2E8B900060FE3 /* Game Closet Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Game Closet Data.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,7 @@
 				610039E21CB23BC600060FE3 /* Keys.plist */,
 				610039E31CB23BC600060FE3 /* Keys.sample.plist */,
 				610039CD1CB239EF00060FE3 /* AppDelegate.swift */,
-				610039CF1CB239EF00060FE3 /* BrowseViewController.swift */,
+				610039CF1CB239EF00060FE3 /* BrowsePlatformViewController.swift */,
 				610039E61CB23CBE00060FE3 /* SearchViewController.swift */,
 				610039D11CB239EF00060FE3 /* Main.storyboard */,
 				610039E81CB25BAA00060FE3 /* GiantBombClient.swift */,
@@ -81,6 +83,7 @@
 				610039D91CB239EF00060FE3 /* LaunchScreen.storyboard */,
 				610039DC1CB239EF00060FE3 /* Info.plist */,
 				610039D41CB239EF00060FE3 /* Game_Closet.xcdatamodeld */,
+				610039EE1CB2E8B900060FE3 /* Game Closet Data.plist */,
 			);
 			path = "Game Closet";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				610039DB1CB239EF00060FE3 /* LaunchScreen.storyboard in Resources */,
 				610039D81CB239EF00060FE3 /* Assets.xcassets in Resources */,
 				610039E51CB23BC600060FE3 /* Keys.sample.plist in Resources */,
+				610039EF1CB2E8B900060FE3 /* Game Closet Data.plist in Resources */,
 				610039D31CB239EF00060FE3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				610039D01CB239EF00060FE3 /* BrowseViewController.swift in Sources */,
+				610039D01CB239EF00060FE3 /* BrowsePlatformViewController.swift in Sources */,
 				610039CE1CB239EF00060FE3 /* AppDelegate.swift in Sources */,
 				610039E71CB23CBE00060FE3 /* SearchViewController.swift in Sources */,
 				610039E91CB25BAA00060FE3 /* GiantBombClient.swift in Sources */,

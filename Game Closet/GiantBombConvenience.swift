@@ -13,7 +13,12 @@ extension GiantBombClient {
     func getPlatformsList(completionHandler: CompletionHander) {
         let method = Methods.Platforms
         
-        taskForGETMethod(method: method, parameters: [:]) { (result, error) in
+        let parameters = [
+            ParameterKeys.FieldList: ParameterKeys.Name,
+            ParameterKeys.Sort: "\(ParameterKeys.Name):asc"
+        ]
+        
+        taskForGETMethod(method: method, parameters: parameters) { (result, error) in
             guard error == nil else {
                 completionHandler(result: nil, error: error)
                 return
@@ -24,7 +29,15 @@ extension GiantBombClient {
                 return
             }
             
-            completionHandler(result: data, error: nil)
+            let results = data["results"] as! [[String: AnyObject]]
+            var platformNamesArray: [String] = []
+            
+            for item in results {
+                let name = item["name"] as! String
+                platformNamesArray.append(name)
+            }
+            
+            completionHandler(result: platformNamesArray, error: nil)
             
         }
         
