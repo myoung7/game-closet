@@ -12,18 +12,6 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var browseTableView: UITableView!
     
-    var platformsArray: [String]? {
-        if let path = NSBundle.mainBundle().pathForResource("Game Closet Data", ofType: "plist") {
-            if let data = NSDictionary(contentsOfFile: path) {
-                if let platforms = data["platforms"] as? [String] {
-                    return platforms
-                }
-            }
-        }
-       return nil
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         browseTableView.delegate = self
@@ -31,12 +19,12 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return platformsArray != nil ? platformsArray!.count : 0
+        return Platform.allValues.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrowseCell")
-        cell?.textLabel?.text = platformsArray![indexPath.row]
+        cell?.textLabel?.text = Platform.allValues[indexPath.row].rawValue
         
         return cell!
     }

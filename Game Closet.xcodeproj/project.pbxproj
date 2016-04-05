@@ -19,7 +19,7 @@
 		610039E91CB25BAA00060FE3 /* GiantBombClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039E81CB25BAA00060FE3 /* GiantBombClient.swift */; };
 		610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */; };
 		610039ED1CB264C900060FE3 /* GiantBombConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */; };
-		610039EF1CB2E8B900060FE3 /* Game Closet Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 610039EE1CB2E8B900060FE3 /* Game Closet Data.plist */; };
+		610039F11CB31E1000060FE3 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039F01CB31E1000060FE3 /* Platform.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		610039E81CB25BAA00060FE3 /* GiantBombClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombClient.swift; sourceTree = "<group>"; };
 		610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConstants.swift; sourceTree = "<group>"; };
 		610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConvenience.swift; sourceTree = "<group>"; };
-		610039EE1CB2E8B900060FE3 /* Game Closet Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Game Closet Data.plist"; sourceTree = "<group>"; };
+		610039F01CB31E1000060FE3 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +78,12 @@
 				610039D11CB239EF00060FE3 /* Main.storyboard */,
 				610039E81CB25BAA00060FE3 /* GiantBombClient.swift */,
 				610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */,
+				610039F01CB31E1000060FE3 /* Platform.swift */,
 				610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */,
 				610039D71CB239EF00060FE3 /* Assets.xcassets */,
 				610039D91CB239EF00060FE3 /* LaunchScreen.storyboard */,
 				610039DC1CB239EF00060FE3 /* Info.plist */,
 				610039D41CB239EF00060FE3 /* Game_Closet.xcdatamodeld */,
-				610039EE1CB2E8B900060FE3 /* Game Closet Data.plist */,
 			);
 			path = "Game Closet";
 			sourceTree = "<group>";
@@ -150,7 +150,6 @@
 				610039DB1CB239EF00060FE3 /* LaunchScreen.storyboard in Resources */,
 				610039D81CB239EF00060FE3 /* Assets.xcassets in Resources */,
 				610039E51CB23BC600060FE3 /* Keys.sample.plist in Resources */,
-				610039EF1CB2E8B900060FE3 /* Game Closet Data.plist in Resources */,
 				610039D31CB239EF00060FE3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +167,7 @@
 				610039E91CB25BAA00060FE3 /* GiantBombClient.swift in Sources */,
 				610039ED1CB264C900060FE3 /* GiantBombConvenience.swift in Sources */,
 				610039D61CB239EF00060FE3 /* Game_Closet.xcdatamodeld in Sources */,
+				610039F11CB31E1000060FE3 /* Platform.swift in Sources */,
 				610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
