@@ -12,6 +12,8 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var browseTableView: UITableView!
     
+    var selectedPlatform: Platform!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         browseTableView.delegate = self
@@ -27,6 +29,18 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
         cell?.textLabel?.text = Platform.allValues[indexPath.row].rawValue
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedPlatform = Platform.allValues[indexPath.row]
+        performSegueWithIdentifier("pushLetterSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "pushLetterSegue" {
+            let controller = segue.destinationViewController as! BrowseLetterViewController
+            controller.selectedPlatform = selectedPlatform
+        }
     }
     
 }

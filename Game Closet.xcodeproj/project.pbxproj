@@ -20,6 +20,7 @@
 		610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */; };
 		610039ED1CB264C900060FE3 /* GiantBombConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */; };
 		610039F11CB31E1000060FE3 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039F01CB31E1000060FE3 /* Platform.swift */; };
+		610039F31CB4284F00060FE3 /* BrowseLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039F21CB4284F00060FE3 /* BrowseLetterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConstants.swift; sourceTree = "<group>"; };
 		610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConvenience.swift; sourceTree = "<group>"; };
 		610039F01CB31E1000060FE3 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		610039F21CB4284F00060FE3 /* BrowseLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseLetterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,19 +75,36 @@
 				610039E21CB23BC600060FE3 /* Keys.plist */,
 				610039E31CB23BC600060FE3 /* Keys.sample.plist */,
 				610039CD1CB239EF00060FE3 /* AppDelegate.swift */,
-				610039CF1CB239EF00060FE3 /* BrowsePlatformViewController.swift */,
-				610039E61CB23CBE00060FE3 /* SearchViewController.swift */,
+				610039F41CB4288800060FE3 /* Controllers */,
 				610039D11CB239EF00060FE3 /* Main.storyboard */,
-				610039E81CB25BAA00060FE3 /* GiantBombClient.swift */,
-				610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */,
-				610039F01CB31E1000060FE3 /* Platform.swift */,
-				610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */,
+				610039F51CB4289E00060FE3 /* Model */,
 				610039D71CB239EF00060FE3 /* Assets.xcassets */,
 				610039D91CB239EF00060FE3 /* LaunchScreen.storyboard */,
 				610039DC1CB239EF00060FE3 /* Info.plist */,
 				610039D41CB239EF00060FE3 /* Game_Closet.xcdatamodeld */,
 			);
 			path = "Game Closet";
+			sourceTree = "<group>";
+		};
+		610039F41CB4288800060FE3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				610039CF1CB239EF00060FE3 /* BrowsePlatformViewController.swift */,
+				610039F21CB4284F00060FE3 /* BrowseLetterViewController.swift */,
+				610039E61CB23CBE00060FE3 /* SearchViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		610039F51CB4289E00060FE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				610039E81CB25BAA00060FE3 /* GiantBombClient.swift */,
+				610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */,
+				610039F01CB31E1000060FE3 /* Platform.swift */,
+				610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +188,7 @@
 				610039D61CB239EF00060FE3 /* Game_Closet.xcdatamodeld in Sources */,
 				610039F11CB31E1000060FE3 /* Platform.swift in Sources */,
 				610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */,
+				610039F31CB4284F00060FE3 /* BrowseLetterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

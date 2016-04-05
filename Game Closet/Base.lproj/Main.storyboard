@@ -62,7 +62,7 @@
         <!--Browse-->
         <scene sceneID="O1s-Aq-6T2">
             <objects>
-                <viewController title="Browse" id="TGH-Qj-GFn" customClass="BrowsePlatformViewController" customModule="Game_Closet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BrowsePlatformViewController" title="Browse" id="TGH-Qj-GFn" customClass="BrowsePlatformViewController" customModule="Game_Closet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j2x-Us-bhQ"/>
                         <viewControllerLayoutGuide type="bottom" id="hBn-P0-3Kl"/>
@@ -108,14 +108,53 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Browse" id="SUO-Af-f3V"/>
-                    <navigationItem key="navigationItem" title="Select a Platform" id="LTS-ab-mMt"/>
+                    <navigationItem key="navigationItem" title="Platform" id="LTS-ab-mMt"/>
                     <connections>
                         <outlet property="browseTableView" destination="2W3-2d-R6J" id="mOO-zd-5Pj"/>
+                        <segue destination="t3t-lW-dzq" kind="show" identifier="pushLetterSegue" id="dRi-T4-9Ht"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDS-Q5-nOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1638" y="-27"/>
+        </scene>
+        <!--Select a Letter-->
+        <scene sceneID="WSk-Fj-S76">
+            <objects>
+                <tableViewController storyboardIdentifier="BrowseLetterViewController" id="t3t-lW-dzq" customClass="BrowseLetterViewController" customModule="Game_Closet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hGs-DM-PNL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BrowseCell" textLabel="ZSJ-Ah-UqA" style="IBUITableViewCellStyleDefault" id="khl-co-Ifo">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="khl-co-Ifo" id="FLx-fN-Xq5">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZSJ-Ah-UqA">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t3t-lW-dzq" id="grC-cs-day"/>
+                            <outlet property="delegate" destination="t3t-lW-dzq" id="daJ-7b-eKy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select a Letter" id="lCD-bW-VV8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4qW-rY-htA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="-27"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hKj-kA-J3p">
