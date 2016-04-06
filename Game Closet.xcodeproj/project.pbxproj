@@ -19,8 +19,9 @@
 		610039E91CB25BAA00060FE3 /* GiantBombClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039E81CB25BAA00060FE3 /* GiantBombClient.swift */; };
 		610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */; };
 		610039ED1CB264C900060FE3 /* GiantBombConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */; };
-		610039F11CB31E1000060FE3 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039F01CB31E1000060FE3 /* Platform.swift */; };
 		610039F31CB4284F00060FE3 /* BrowseLetterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039F21CB4284F00060FE3 /* BrowseLetterViewController.swift */; };
+		610039F91CB48EF800060FE3 /* platforms.plist in Resources */ = {isa = PBXBuildFile; fileRef = 610039F81CB48EF800060FE3 /* platforms.plist */; };
+		610039FB1CB4928700060FE3 /* PlatformsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610039FA1CB4928700060FE3 /* PlatformsHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +39,9 @@
 		610039E81CB25BAA00060FE3 /* GiantBombClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombClient.swift; sourceTree = "<group>"; };
 		610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConstants.swift; sourceTree = "<group>"; };
 		610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiantBombConvenience.swift; sourceTree = "<group>"; };
-		610039F01CB31E1000060FE3 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		610039F21CB4284F00060FE3 /* BrowseLetterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseLetterViewController.swift; sourceTree = "<group>"; };
+		610039F81CB48EF800060FE3 /* platforms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = platforms.plist; sourceTree = "<group>"; };
+		610039FA1CB4928700060FE3 /* PlatformsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformsHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,10 @@
 		610039F51CB4289E00060FE3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				610039F81CB48EF800060FE3 /* platforms.plist */,
+				610039FA1CB4928700060FE3 /* PlatformsHandler.swift */,
 				610039E81CB25BAA00060FE3 /* GiantBombClient.swift */,
 				610039EC1CB264C900060FE3 /* GiantBombConvenience.swift */,
-				610039F01CB31E1000060FE3 /* Platform.swift */,
 				610039EA1CB25BEE00060FE3 /* GiantBombConstants.swift */,
 			);
 			name = Model;
@@ -167,6 +170,7 @@
 			files = (
 				610039E41CB23BC600060FE3 /* Keys.plist in Resources */,
 				610039DB1CB239EF00060FE3 /* LaunchScreen.storyboard in Resources */,
+				610039F91CB48EF800060FE3 /* platforms.plist in Resources */,
 				610039D81CB239EF00060FE3 /* Assets.xcassets in Resources */,
 				610039E51CB23BC600060FE3 /* Keys.sample.plist in Resources */,
 				610039D31CB239EF00060FE3 /* Main.storyboard in Resources */,
@@ -181,12 +185,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				610039D01CB239EF00060FE3 /* BrowsePlatformViewController.swift in Sources */,
+				610039FB1CB4928700060FE3 /* PlatformsHandler.swift in Sources */,
 				610039CE1CB239EF00060FE3 /* AppDelegate.swift in Sources */,
 				610039E71CB23CBE00060FE3 /* SearchViewController.swift in Sources */,
 				610039E91CB25BAA00060FE3 /* GiantBombClient.swift in Sources */,
 				610039ED1CB264C900060FE3 /* GiantBombConvenience.swift in Sources */,
 				610039D61CB239EF00060FE3 /* Game_Closet.xcdatamodeld in Sources */,
-				610039F11CB31E1000060FE3 /* Platform.swift in Sources */,
 				610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */,
 				610039F31CB4284F00060FE3 /* BrowseLetterViewController.swift in Sources */,
 			);

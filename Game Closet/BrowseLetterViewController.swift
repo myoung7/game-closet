@@ -11,7 +11,7 @@ import UIKit
 
 class BrowseLetterViewController: UITableViewController {
     
-    var selectedPlatform: Platform!
+    var selectedPlatform: (name: String, id: String)!
     let alphabetArray: [String] = [
         "0-9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
         ]
@@ -22,7 +22,7 @@ class BrowseLetterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "\(selectedPlatform.rawValue)"
+        navigationItem.title = "\(selectedPlatform.name)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

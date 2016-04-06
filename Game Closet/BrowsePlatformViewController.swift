@@ -12,7 +12,11 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var browseTableView: UITableView!
     
-    var selectedPlatform: Platform!
+    var platformNamesArray: [String]! {
+        return PlatformsHandler.sharedInstance.namesArray
+    }
+    
+    var selectedPlatform: (name: String, id: String)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +25,20 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Platform.allValues.count
+        return platformNamesArray != nil ? platformNamesArray.count : 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrowseCell")
-        cell?.textLabel?.text = Platform.allValues[indexPath.row].rawValue
+        if let platformNamesArray = platformNamesArray {
+            cell?.textLabel?.text = platformNamesArray[indexPath.row]
+        }
         
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedPlatform = Platform.allValues[indexPath.row]
+        selectedPlatform = PlatformsHandler.sharedInstance.getPlatformTupleAtIndex(indexPath.row)!
         performSegueWithIdentifier("pushLetterSegue", sender: self)
     }
     
