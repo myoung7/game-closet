@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search-->
         <scene sceneID="Z4q-ap-E6B">
             <objects>
-                <viewController id="dty-iG-dCb" sceneMemberID="viewController">
+                <viewController id="dty-iG-dCb" customClass="SearchViewController" customModule="Game_Closet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9yb-SH-m9W"/>
                         <viewControllerLayoutGuide type="bottom" id="MkR-B7-asT"/>
@@ -16,12 +17,80 @@
                     <view key="view" contentMode="scaleToFill" id="Odu-Pv-YTi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8jO-YQ-006">
+                                <rect key="frame" x="20" y="125" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.93027693603686323" blue="0.79579642323908306" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FKy-nL-UaH"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-ic-O1k">
+                                <rect key="frame" x="0.0" y="335" width="600" height="216"/>
+                                <color key="backgroundColor" red="1" green="0.88223827736422034" blue="0.66060057457614318" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dty-iG-dCb" id="hUS-oH-c2w"/>
+                                    <outlet property="delegate" destination="dty-iG-dCb" id="Dfk-b6-klA"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CON-6m-er7">
+                                <rect key="frame" x="268" y="306" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-xT-VmN">
+                                <rect key="frame" x="20" y="96" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.85882352941176465" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="8jO-YQ-006" firstAttribute="trailing" secondItem="Odu-Pv-YTi" secondAttribute="trailingMargin" id="3k5-Q0-DCL"/>
+                            <constraint firstItem="Ysp-xT-VmN" firstAttribute="top" secondItem="9yb-SH-m9W" secondAttribute="bottom" constant="32" id="51D-Ad-HA4"/>
+                            <constraint firstItem="CON-6m-er7" firstAttribute="centerX" secondItem="Odu-Pv-YTi" secondAttribute="centerX" id="7wP-NF-PN5"/>
+                            <constraint firstItem="Yva-ic-O1k" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leading" id="8NO-97-t3k"/>
+                            <constraint firstAttribute="trailing" secondItem="Yva-ic-O1k" secondAttribute="trailing" id="CxT-rB-wrP"/>
+                            <constraint firstItem="MkR-B7-asT" firstAttribute="top" secondItem="Yva-ic-O1k" secondAttribute="bottom" id="G2Z-8W-pnQ"/>
+                            <constraint firstItem="MkR-B7-asT" firstAttribute="top" secondItem="Yva-ic-O1k" secondAttribute="bottom" id="I4M-cR-5pP"/>
+                            <constraint firstItem="Yva-ic-O1k" firstAttribute="top" secondItem="CON-6m-er7" secondAttribute="bottom" constant="8" id="Lo9-vV-cNU"/>
+                            <constraint firstItem="8jO-YQ-006" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leadingMargin" id="O5E-1d-KvJ"/>
+                            <constraint firstItem="Ysp-xT-VmN" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leadingMargin" id="QzQ-od-23Z"/>
+                            <constraint firstAttribute="trailing" secondItem="Yva-ic-O1k" secondAttribute="trailing" id="TYb-zj-hk4"/>
+                            <constraint firstItem="Yva-ic-O1k" firstAttribute="top" secondItem="CON-6m-er7" secondAttribute="bottom" constant="8" id="n6n-pe-x0o"/>
+                            <constraint firstItem="Yva-ic-O1k" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leading" id="qUC-PA-6UT"/>
+                            <constraint firstItem="8jO-YQ-006" firstAttribute="top" secondItem="Ysp-xT-VmN" secondAttribute="bottom" constant="8" id="ylH-4E-gcl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8NO-97-t3k"/>
+                                <exclude reference="CxT-rB-wrP"/>
+                                <exclude reference="n6n-pe-x0o"/>
+                                <exclude reference="G2Z-8W-pnQ"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jUn-U7-PTk" appends="YES" id="Iy6-gS-6ur"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="rkk-wY-xPn"/>
-                    <navigationItem key="navigationItem" id="cFT-qd-TVa"/>
+                    <navigationItem key="navigationItem" title="Search" id="cFT-qd-TVa"/>
+                    <connections>
+                        <outlet property="pickerView" destination="Yva-ic-O1k" id="zzX-fk-be2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cE-5t-eDx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jUn-U7-PTk">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="dty-iG-dCb" id="PRp-qZ-hEw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1638" y="782"/>
         </scene>
@@ -152,7 +221,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Select a Letter" id="lCD-bW-VV8"/>
                     <connections>
-                        <segue destination="MLL-HU-hqn" kind="show" identifier="pushGameViewController" id="ku7-Sn-axn"/>
+                        <segue destination="MLL-HU-hqn" kind="show" identifier="pushGameViewController" id="pPb-Je-uMM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qW-rY-htA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,7 +231,7 @@
         <!--Browse Game View Controller-->
         <scene sceneID="7bx-dj-vCl">
             <objects>
-                <viewController title="Browse Game View Controller" id="MLL-HU-hqn" sceneMemberID="viewController">
+                <viewController title="Browse Game View Controller" id="MLL-HU-hqn" customClass="BrowseGameListViewController" customModule="Game_Closet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rzv-eK-nTE"/>
                         <viewControllerLayoutGuide type="bottom" id="Bde-1f-SO4"/>
@@ -198,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYc-A7-iuQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="-27"/>
+            <point key="canvasLocation" x="3134" y="356"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hKj-kA-J3p">

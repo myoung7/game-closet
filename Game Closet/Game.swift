@@ -15,6 +15,14 @@ class Game: NSManagedObject {
     @NSManaged var info: String
     @NSManaged var platform: Platform
     
-    //TODO: Finish implementation
+    
+    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Game", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        name = dictionary[GiantBombClient.ResponseKeys.Name] as! String
+        id = dictionary[GiantBombClient.ResponseKeys.ID] as! String
+        info = dictionary[GiantBombClient.ResponseKeys.Info] as! String
+    }
     
 }

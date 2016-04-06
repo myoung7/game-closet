@@ -12,6 +12,9 @@ import UIKit
 class BrowseLetterViewController: UITableViewController {
     
     var selectedPlatform: (name: String, id: String)!
+    
+    var selectedFilter: String!
+    
     let alphabetArray: [String] = [
         "0-9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
         ]
@@ -33,6 +36,19 @@ class BrowseLetterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrowseCell")!
         cell.textLabel?.text = alphabetArray[indexPath.row]
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedFilter = alphabetArray[indexPath.row]
+        performSegueWithIdentifier("pushGameViewController", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "pushGameViewController" {
+            let controller = segue.destinationViewController as! BrowseGameListViewController
+            controller.selectedPlatform = self.selectedPlatform
+            controller.filteredString = selectedFilter
+        }
     }
     
     //TODO: Add didSelect function for tableview to segue to the BrowseGameListViewController

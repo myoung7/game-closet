@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension GiantBombClient {
     
@@ -45,12 +46,18 @@ extension GiantBombClient {
         
     }
     
-//    func getGameListWithFilters(filters: [String: AnyObject], completionHandler: CompletionHandler) {
-//        let method = Methods.Games
-//        
-//        var mutableParameters = [
-//            
-//        ]
-//    }
+    func getGameListWithFilters(filters: [String: AnyObject], context: NSManagedObjectContext, completionHandler: ResultErrorStringCompletionHandler) {
+        let method = Methods.Games
+        
+        taskForGETMethod(method: method, parameters: filters) { (result, error) in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            
+            print(result!)
+            
+        }
+    }
     
 }

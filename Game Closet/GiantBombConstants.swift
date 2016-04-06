@@ -44,10 +44,13 @@ extension GiantBombClient {
         static let Name = "name"
         static let Ascending = "asc"
         static let Descending = "desc"
+        static let Platforms = "platforms"
     }
     
     struct ResponseKeys {
-        
+        static let Name = "name"
+        static let ID = "id"
+        static let Info = "info"
     }
 
 }
