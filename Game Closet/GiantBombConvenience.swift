@@ -10,7 +10,9 @@ import Foundation
 
 extension GiantBombClient {
     
-    func getPlatformsList(completionHandler: CompletionHander) {
+    typealias ResultErrorStringCompletionHandler = (result: AnyObject!, errorString: String?) -> Void
+    
+    func getPlatformsList(completionHandler: CompletionHandler) {
         let method = Methods.Platforms
         
         let parameters = [
@@ -42,5 +44,13 @@ extension GiantBombClient {
         }
         
     }
+    
+//    func getGameListWithFilters(filters: [String: AnyObject], completionHandler: CompletionHandler) {
+//        let method = Methods.Games
+//        
+//        var mutableParameters = [
+//            
+//        ]
+//    }
     
 }

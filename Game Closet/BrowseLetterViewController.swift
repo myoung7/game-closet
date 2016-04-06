@@ -34,5 +34,7 @@ class BrowseLetterViewController: UITableViewController {
         cell.textLabel?.text = alphabetArray[indexPath.row]
         return cell
     }
+    
+    //TODO: Add didSelect function for tableview to segue to the BrowseGameListViewController
 
 }

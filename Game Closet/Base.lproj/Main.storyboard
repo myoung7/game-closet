@@ -151,10 +151,54 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select a Letter" id="lCD-bW-VV8"/>
+                    <connections>
+                        <segue destination="MLL-HU-hqn" kind="show" identifier="pushGameViewController" id="ku7-Sn-axn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qW-rY-htA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2322" y="-27"/>
+        </scene>
+        <!--Browse Game View Controller-->
+        <scene sceneID="7bx-dj-vCl">
+            <objects>
+                <viewController title="Browse Game View Controller" id="MLL-HU-hqn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rzv-eK-nTE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bde-1f-SO4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ufM-fV-Hcj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2MW-bx-4Cz">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GameListCell" id="R1n-c4-XKP">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R1n-c4-XKP" id="0G5-wr-nkK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2MW-bx-4Cz" secondAttribute="trailing" id="3Ww-SF-rb4"/>
+                            <constraint firstItem="2MW-bx-4Cz" firstAttribute="leading" secondItem="ufM-fV-Hcj" secondAttribute="leading" id="EUo-pg-rld"/>
+                            <constraint firstItem="2MW-bx-4Cz" firstAttribute="top" secondItem="Rzv-eK-nTE" secondAttribute="bottom" id="MRt-K5-aUj"/>
+                            <constraint firstItem="Bde-1f-SO4" firstAttribute="top" secondItem="2MW-bx-4Cz" secondAttribute="bottom" id="a29-SV-u1u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Shu-mO-Ekv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BYc-A7-iuQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3042" y="-27"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hKj-kA-J3p">

@@ -10,7 +10,7 @@ import Foundation
 
 class GiantBombClient {
     
-    typealias CompletionHander = (result: AnyObject!, error: NSError?) -> Void
+    typealias CompletionHandler = (result: AnyObject!, error: NSError?) -> Void
     
     var session: NSURLSession
     
@@ -20,7 +20,7 @@ class GiantBombClient {
     
     static let sharedInstance = GiantBombClient()
 
-    func taskForGETMethod(method method: String, parameters: [String: AnyObject], completionHandler: CompletionHander) {
+    func taskForGETMethod(method method: String, parameters: [String: AnyObject], completionHandler: CompletionHandler) {
         var mutableParameters = parameters
         
         guard let apiKey = Constants.APIKey else {
@@ -54,7 +54,7 @@ class GiantBombClient {
         task.resume()
     }
     
-    class func parseJSONWithCompletionHandler(data: NSData, completionHandler: CompletionHander) {
+    class func parseJSONWithCompletionHandler(data: NSData, completionHandler: CompletionHandler) {
         //Copied from FavoriteActors app.
         var parsingError: NSError? = nil
         

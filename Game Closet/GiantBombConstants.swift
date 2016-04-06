@@ -32,6 +32,7 @@ extension GiantBombClient {
     
     struct Methods {
         static let Platforms = "platforms"
+        static let Games = "games"
     }
     
     struct ParameterKeys {
