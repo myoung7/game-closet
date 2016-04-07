@@ -45,12 +45,22 @@ extension GiantBombClient {
         static let Ascending = "asc"
         static let Descending = "desc"
         static let Platforms = "platforms"
+        static let Deck = "deck"
+        static let Image = "image"
+        static let SiteURL = "site_detail_url"
+        static let ID = "id"
     }
     
     struct ResponseKeys {
+        static let Results = "results"
         static let Name = "name"
         static let ID = "id"
         static let Info = "info"
+        static let Deck = "deck"
+        static let SiteURL = "site_detail_url"
+        static let Image = "image"
+        static let ImageURL = "imageURL"
+        static let SmallImageURL = "small_url"
     }
 
 }

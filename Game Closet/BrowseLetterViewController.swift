@@ -46,7 +46,7 @@ class BrowseLetterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "pushGameViewController" {
             let controller = segue.destinationViewController as! BrowseGameListViewController
-            controller.selectedPlatform = self.selectedPlatform
+//            controller.selectedPlatform = self.selectedPlatform
             controller.filteredString = selectedFilter
         }
     }

@@ -13,6 +13,7 @@ class Game: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var id: String
     @NSManaged var info: String
+    @NSManaged var imageURL: String
     @NSManaged var platform: Platform
     
     
@@ -23,6 +24,7 @@ class Game: NSManagedObject {
         name = dictionary[GiantBombClient.ResponseKeys.Name] as! String
         id = dictionary[GiantBombClient.ResponseKeys.ID] as! String
         info = dictionary[GiantBombClient.ResponseKeys.Info] as! String
+        imageURL = dictionary[GiantBombClient.ResponseKeys.ImageURL] as! String
     }
     
 }

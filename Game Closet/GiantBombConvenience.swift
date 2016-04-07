@@ -8,10 +8,12 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension GiantBombClient {
     
     typealias ResultErrorStringCompletionHandler = (result: AnyObject!, errorString: String?) -> Void
+    typealias resultImageErrorStringCompletionHandler = (resultImage: UIImage?, errorString: String?) -> Void
     
     func getPlatformsList(completionHandler: CompletionHandler) {
         let method = Methods.Platforms
@@ -46,18 +48,68 @@ extension GiantBombClient {
         
     }
     
-    func getGameListWithFilters(filters: [String: AnyObject], context: NSManagedObjectContext, completionHandler: ResultErrorStringCompletionHandler) {
+    func getGameListWithFilters(filters: [String: AnyObject], platform: Platform, context: NSManagedObjectContext, completionHandler: ResultErrorStringCompletionHandler) {
         let method = Methods.Games
         
-        taskForGETMethod(method: method, parameters: filters) { (result, error) in
+        var mutableParameters = filters
+        
+        mutableParameters[ParameterKeys.Sort] = "\(ParameterKeys.Name):asc"
+        
+        taskForGETMethod(method: method, parameters: mutableParameters) { (result, error) in
             guard error == nil else {
-                print(error?.localizedDescription)
+                completionHandler(result: nil, errorString: error!.localizedDescription)
                 return
             }
             
-            print(result!)
+            guard let result = result as? [String: AnyObject] else {
+                completionHandler(result: nil, errorString: "ERROR: Data not found.")
+                return
+            }
+            
+            let resultDictionary = result[ResponseKeys.Results] as! [[String: AnyObject]]
+            var gamesDictionary: [Game] = []
+            
+            for game in resultDictionary {
+                
+                let imageDictionary = game[ResponseKeys.Image] as! [String: AnyObject]
+                
+                let dictionary = [
+                    ResponseKeys.Name: game[ResponseKeys.Name] as! String,
+                    ResponseKeys.Info: game[ResponseKeys.Deck] as! String,
+                    ResponseKeys.ImageURL: "http://static.giantbomb.com\(imageDictionary[ResponseKeys.SmallImageURL] as! String)",
+                    ResponseKeys.ID: String(game[ResponseKeys.ID] as! Int)
+                ]
+                
+                let game = Game(dictionary: dictionary, context: context)
+                
+                game.platform = platform
+                gamesDictionary.append(game)
+            }
+            
+            completionHandler(result: gamesDictionary, errorString: nil)
             
         }
+    }
+    
+    func downloadImageWithURL(imageURL: String, completionHandler: resultImageErrorStringCompletionHandler) {
+        
+        let url = NSURL(string: imageURL)!
+        
+        let request = NSURLRequest(URL: url)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+            guard error == nil else {
+                completionHandler(resultImage: nil, errorString: "Error getting image data: \(error!)")
+                return
+            }
+            
+            let image = UIImage(data: data!)
+            
+            completionHandler(resultImage: image, errorString: nil)
+        }
+        
+        task.resume()
+        
     }
     
 }

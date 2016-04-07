@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias PlatformTuple = (name: String, id: String)
+
 class PlatformsHandler {
     
     static let sharedInstance = PlatformsHandler()
