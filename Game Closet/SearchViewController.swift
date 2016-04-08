@@ -29,8 +29,8 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         ]
         
         let platformDictionary = [
-            GiantBombClient.ParameterKeys.Name: selectedPlatformTuple.name,
-            GiantBombClient.ParameterKeys.ID: selectedPlatformTuple.id
+            Platform.Keys.Name: selectedPlatformTuple.name,
+            Platform.Keys.ID: selectedPlatformTuple.id
         ]
         
         let platform = Platform(dictionary: platformDictionary, context: self.temporaryObjectContext)

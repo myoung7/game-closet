@@ -10,6 +10,12 @@ import Foundation
 import CoreData
 
 class Platform: NSManagedObject {
+    
+    struct Keys {
+        static let Name = "name"
+        static let ID = "id"
+    }
+    
     @NSManaged var name: String
     @NSManaged var id: String
     @NSManaged var games: [Game]
@@ -18,8 +24,8 @@ class Platform: NSManagedObject {
         let entity = NSEntityDescription.entityForName("Platform", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
-        name = dictionary[GiantBombClient.ResponseKeys.Name] as! String
-        id = dictionary[GiantBombClient.ResponseKeys.ID] as! String
+        name = dictionary[Keys.Name] as! String
+        id = dictionary[Keys.ID] as! String
     }
     
 }

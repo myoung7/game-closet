@@ -10,6 +10,14 @@ import Foundation
 import CoreData
 
 class Game: NSManagedObject {
+    
+    struct Keys {
+        static let Name = "name"
+        static let ID = "id"
+        static let Info = "info"
+        static let ImageURL = "imageURL"
+    }
+    
     @NSManaged var name: String
     @NSManaged var id: String
     @NSManaged var info: String
@@ -21,10 +29,10 @@ class Game: NSManagedObject {
         let entity = NSEntityDescription.entityForName("Game", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
-        name = dictionary[GiantBombClient.ResponseKeys.Name] as! String
-        id = dictionary[GiantBombClient.ResponseKeys.ID] as! String
-        info = dictionary[GiantBombClient.ResponseKeys.Info] as! String
-        imageURL = dictionary[GiantBombClient.ResponseKeys.ImageURL] as! String
+        name = dictionary[Keys.Name] as! String
+        id = dictionary[Keys.ID] as! String
+        info = dictionary[Keys.Info] as! String
+        imageURL = dictionary[Keys.ImageURL] as! String
     }
     
 }

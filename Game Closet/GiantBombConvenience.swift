@@ -74,10 +74,10 @@ extension GiantBombClient {
                 let imageDictionary = game[ResponseKeys.Image] as! [String: AnyObject]
                 
                 let dictionary = [
-                    ResponseKeys.Name: game[ResponseKeys.Name] as! String,
-                    ResponseKeys.Info: game[ResponseKeys.Deck] as! String,
-                    ResponseKeys.ImageURL: "http://static.giantbomb.com\(imageDictionary[ResponseKeys.SmallImageURL] as! String)",
-                    ResponseKeys.ID: String(game[ResponseKeys.ID] as! Int)
+                    Game.Keys.Name: game[ResponseKeys.Name] as! String,
+                    Game.Keys.Info: game[ResponseKeys.Deck] as! String,
+                    Game.Keys.ImageURL: "http://static.giantbomb.com\(imageDictionary[ResponseKeys.SmallImageURL] as! String)",
+                    Game.Keys.ID: String(game[ResponseKeys.ID] as! Int)
                 ]
                 
                 let game = Game(dictionary: dictionary, context: context)
