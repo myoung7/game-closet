@@ -15,6 +15,17 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     var selectedPlatformTuple: PlatformTuple!
     var filteredString: String!
     var gameList: [Game]!
+    var selectedGameList = [Game]()
+    var selectedGame: Game!
+    
+    var searchSeguePerformed = false //True if view controller was loaded due to a segue from the SearchViewController.
+    var multipleSelectEnabled = false
+    
+    @IBOutlet weak var gameListTableView: UITableView!
+    
+//    var sharedContext: NSManagedObjectContext {
+//        return CoreDataStackManager.sharedInstance().managedObjectContext
+//    }
     
 //    lazy var temporaryObjectContext: NSManagedObjectContext = {
 //        let coordinator = CoreDataStackManager.sharedInstance().persistentStoreCoordinator
@@ -40,6 +51,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameListTableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,12 +72,37 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
                 return
             }
             
+            guard resultImage != nil else {
+                print("ERROR: Image could not be loaded.")
+                return
+            }
+            
             dispatch_async(dispatch_get_main_queue(), {
                 cell.imageView?.image = resultImage!
             })
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        gameWasSelectedAtIndexPath(indexPath)
+    }
+    
+    func gameWasSelectedAtIndexPath(indexPath: NSIndexPath) {
+        if multipleSelectEnabled {
+            selectedGameList.append(gameList[indexPath.row])
+        } else {
+            selectedGame = gameList[indexPath.row]
+            performSegueWithIdentifier("gameSelectedSegue", sender: self)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "gameSelectedSegue" {
+            let controller = segue.destinationViewController as! GameDetailViewController
+            controller.currentGame = selectedGame
+        }
     }
     
 //    func getGames() {

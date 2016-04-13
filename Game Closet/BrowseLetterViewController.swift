@@ -48,6 +48,7 @@ class BrowseLetterViewController: UITableViewController {
             let controller = segue.destinationViewController as! BrowseGameListViewController
 //            controller.selectedPlatform = self.selectedPlatform
             controller.filteredString = selectedFilter
+            controller.searchSeguePerformed = true
         }
     }
     
