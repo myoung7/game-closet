@@ -17,11 +17,15 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var gameList: [Game]!
     
+    @IBOutlet weak var greyLoadingView: UIView!
+    
     @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBAction func searchButtonPressed(sender: UIButton) {
+        
+        greyLoadingView.hidden = false
         
         let filters = [
             GiantBombClient.ParameterKeys.Filter: "\(GiantBombClient.ParameterKeys.Platforms):\(selectedPlatformTuple.id),\(GiantBombClient.ParameterKeys.Name):\(titleTextField.text!)",
@@ -45,6 +49,7 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             self.gameList = result as! [Game]
             
             dispatch_async(dispatch_get_main_queue(), {
+                self.greyLoadingView.hidden = true
                 self.performSegueWithIdentifier("searchBrowseGameSegue", sender: self)
             })
             

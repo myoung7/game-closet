@@ -63,6 +63,19 @@
                                     <action selector="searchButtonPressed:" destination="dty-iG-dCb" eventType="touchUpInside" id="wxX-k1-yMa"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKz-vA-a8G" userLabel="Grey Loading View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4Je-dK-ekU">
+                                        <rect key="frame" x="282" y="281.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4Je-dK-ekU" firstAttribute="centerX" secondItem="jKz-vA-a8G" secondAttribute="centerX" id="ZuF-0V-VWv"/>
+                                    <constraint firstItem="4Je-dK-ekU" firstAttribute="centerY" secondItem="jKz-vA-a8G" secondAttribute="centerY" id="uUM-U0-mdl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.85882352941176465" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -72,15 +85,19 @@
                             <constraint firstItem="Yva-ic-O1k" firstAttribute="top" secondItem="CON-6m-er7" secondAttribute="bottom" constant="8" id="5KI-ag-goU"/>
                             <constraint firstItem="Yva-ic-O1k" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leading" id="8NO-97-t3k"/>
                             <constraint firstAttribute="trailing" secondItem="Yva-ic-O1k" secondAttribute="trailing" id="CxT-rB-wrP"/>
+                            <constraint firstItem="jKz-vA-a8G" firstAttribute="top" secondItem="Odu-Pv-YTi" secondAttribute="top" id="EjQ-gK-jqX"/>
                             <constraint firstItem="MkR-B7-asT" firstAttribute="top" secondItem="Yva-ic-O1k" secondAttribute="bottom" id="G2Z-8W-pnQ"/>
                             <constraint firstItem="TQd-Xi-zRD" firstAttribute="trailing" secondItem="Odu-Pv-YTi" secondAttribute="trailingMargin" id="JP9-WE-0vl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="CON-6m-er7" secondAttribute="leading" id="K6H-G2-j6m"/>
                             <constraint firstItem="8jO-YQ-006" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leadingMargin" id="O5E-1d-KvJ"/>
                             <constraint firstItem="Ysp-xT-VmN" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leadingMargin" id="QzQ-od-23Z"/>
                             <constraint firstAttribute="trailing" secondItem="Yva-ic-O1k" secondAttribute="trailing" id="TYb-zj-hk4"/>
+                            <constraint firstAttribute="bottom" secondItem="jKz-vA-a8G" secondAttribute="bottom" id="YT7-He-HUj"/>
                             <constraint firstItem="TQd-Xi-zRD" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leadingMargin" id="bdc-CY-8Yz"/>
+                            <constraint firstAttribute="trailing" secondItem="jKz-vA-a8G" secondAttribute="trailing" id="bwg-Ad-bOF"/>
                             <constraint firstItem="MkR-B7-asT" firstAttribute="top" secondItem="TQd-Xi-zRD" secondAttribute="bottom" constant="8" id="ekE-MK-Aqd"/>
                             <constraint firstItem="Yva-ic-O1k" firstAttribute="top" secondItem="CON-6m-er7" secondAttribute="bottom" constant="8" id="n6n-pe-x0o"/>
+                            <constraint firstItem="jKz-vA-a8G" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leading" id="o4L-ha-1Hs"/>
                             <constraint firstItem="TQd-Xi-zRD" firstAttribute="top" secondItem="Yva-ic-O1k" secondAttribute="bottom" constant="8" id="pNH-IR-X5l"/>
                             <constraint firstItem="Yva-ic-O1k" firstAttribute="leading" secondItem="Odu-Pv-YTi" secondAttribute="leading" id="qUC-PA-6UT"/>
                             <constraint firstItem="8jO-YQ-006" firstAttribute="top" secondItem="Ysp-xT-VmN" secondAttribute="bottom" constant="8" id="ylH-4E-gcl"/>
@@ -100,6 +117,7 @@
                     <tabBarItem key="tabBarItem" title="Search" id="rkk-wY-xPn"/>
                     <navigationItem key="navigationItem" title="Search" id="cFT-qd-TVa"/>
                     <connections>
+                        <outlet property="greyLoadingView" destination="jKz-vA-a8G" id="aa6-Ja-BFv"/>
                         <outlet property="pickerView" destination="Yva-ic-O1k" id="zzX-fk-be2"/>
                         <outlet property="titleTextField" destination="8jO-YQ-006" id="4R2-Df-HNq"/>
                         <segue destination="MLL-HU-hqn" kind="show" identifier="searchBrowseGameSegue" id="VBd-Db-Xhd"/>
@@ -271,7 +289,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-oD-1PO">
+                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-oD-1PO">
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="3tc-Wc-Ugh"/>
@@ -311,6 +329,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1cn-zc-apD"/>
+                                                            <exclude reference="UOw-rC-G8N"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -359,6 +383,7 @@
                     <navigationItem key="navigationItem" title="Title" id="Shu-mO-Ekv"/>
                     <connections>
                         <outlet property="gameListTableView" destination="2MW-bx-4Cz" id="tsG-P7-G9n"/>
+                        <outlet property="greyLoadingView" destination="jKz-vA-a8G" id="sK6-mr-cfp"/>
                         <segue destination="pQ1-fQ-5Vg" kind="show" identifier="gameSelectedSegue" id="AeF-uT-pHr"/>
                     </connections>
                 </viewController>

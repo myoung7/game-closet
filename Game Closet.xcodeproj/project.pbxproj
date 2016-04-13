@@ -28,6 +28,7 @@
 		61003A031CB4B9A900060FE3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61003A021CB4B9A900060FE3 /* Game.swift */; };
 		61003A061CB6231600060FE3 /* GameListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61003A051CB6231600060FE3 /* GameListCell.swift */; };
 		61003A0B1CB965A800060FE3 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */; };
+		6120A9CF1CBEE84500406D20 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120A9CE1CBEE84500406D20 /* ImageHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		61003A021CB4B9A900060FE3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		61003A051CB6231600060FE3 /* GameListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListCell.swift; sourceTree = "<group>"; };
 		61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		6120A9CE1CBEE84500406D20 /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */,
 				610039E61CB23CBE00060FE3 /* SearchViewController.swift */,
 				610039FA1CB4928700060FE3 /* PlatformsHandler.swift */,
+				6120A9CE1CBEE84500406D20 /* ImageHandler.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				610039FD1CB4B5D700060FE3 /* BrowseGameListViewController.swift in Sources */,
 				610039D61CB239EF00060FE3 /* Game_Closet.xcdatamodeld in Sources */,
 				610039EB1CB25BEE00060FE3 /* GiantBombConstants.swift in Sources */,
+				6120A9CF1CBEE84500406D20 /* ImageHandler.swift in Sources */,
 				610039F31CB4284F00060FE3 /* BrowseLetterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

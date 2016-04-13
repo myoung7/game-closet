@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class Game: NSManagedObject {
     
@@ -24,7 +25,6 @@ class Game: NSManagedObject {
     @NSManaged var imageURL: String
     @NSManaged var platform: Platform
     
-    
     init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Game", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -33,6 +33,16 @@ class Game: NSManagedObject {
         id = dictionary[Keys.ID] as! String
         info = dictionary[Keys.Info] as! String
         imageURL = dictionary[Keys.ImageURL] as! String
+    }
+    
+    var gameImage: UIImage? {
+        
+        let imagePath = ImageHandler.sharedInstance.generateImagePathURL(id)
+        if let image = UIImage(contentsOfFile: imagePath.path!) {
+            return image
+        } else {
+            return nil
+        }
     }
     
 }

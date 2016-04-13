@@ -21,6 +21,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     var searchSeguePerformed = false //True if view controller was loaded due to a segue from the SearchViewController.
     var multipleSelectEnabled = false
     
+    @IBOutlet weak var greyLoadingView: UIView!
+    
     @IBOutlet weak var gameListTableView: UITableView!
     
 //    var sharedContext: NSManagedObjectContext {
@@ -61,26 +63,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameListCell") as! GameListCell
         
-        let game = gameList[indexPath.row]
-        
-        cell.gameNameTitleLabel.text = game.name
-        cell.gameDescriptionTitleLabel.text = game.info
-        
-        GiantBombClient.sharedInstance.downloadImageWithURL(game.imageURL) { (resultImage, errorString) in
-            guard errorString == nil else {
-                print(errorString)
-                return
-            }
-            
-            guard resultImage != nil else {
-                print("ERROR: Image could not be loaded.")
-                return
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                cell.imageView?.image = resultImage!
-            })
-        }
+        configureCell(cell: cell, indexPath: indexPath)
         
         return cell
     }
@@ -102,6 +85,36 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == "gameSelectedSegue" {
             let controller = segue.destinationViewController as! GameDetailViewController
             controller.currentGame = selectedGame
+        }
+    }
+    
+    func configureCell(cell cell: GameListCell, indexPath: NSIndexPath) {
+        
+        let game = gameList[indexPath.row]
+        
+        cell.gameNameTitleLabel.text = game.name
+        cell.gameDescriptionTitleLabel.text = game.info
+        
+        guard game.gameImage == nil else {
+            cell.imageView?.image = game.gameImage
+            return
+        }
+        
+        GiantBombClient.sharedInstance.downloadImageWithURL(game.imageURL) { (resultImage, errorString) in
+            guard errorString == nil else {
+                print(errorString)
+                return
+            }
+            
+            guard resultImage != nil else {
+                print("ERROR: Image could not be loaded.")
+                return
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                ImageHandler.sharedInstance.storeImageWithIdentifier(game.id, image: resultImage!)
+                cell.imageView?.image = game.gameImage
+            })
         }
     }
     
