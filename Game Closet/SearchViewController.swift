@@ -12,7 +12,7 @@ import CoreData
 
 class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var selectedPlatformTuple: PlatformTuple! = PlatformsHandler.sharedInstance.getPlatformTupleAtIndex(0)
+    var selectedPlatformTuple: PlatformTuple!
     var selectedPlatform: Platform!
     
     var gameList: [Game]!
@@ -95,7 +95,7 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let platform = PlatformsHandler.sharedInstance.getPlatformTupleAtIndex(row)
+        let platform = PlatformsHandler.sharedInstance.getPlatformTupleWithIdentifier(platformNamesArray[row])
         selectedPlatformTuple = platform
         print(selectedPlatformTuple.name)
     }
@@ -105,6 +105,7 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let controller = segue.destinationViewController as! BrowseGameListViewController
             controller.gameList = gameList
             controller.selectedPlatformTuple = selectedPlatformTuple
+            controller.searchSeguePerformed = true
         }
     }
 }

@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 import CoreData
 
-class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var selectedPlatformTuple: PlatformTuple!
+    var selectedPlatform: Platform!
     var filteredString: String!
     var gameList: [Game]!
     var selectedGameList = [Game]()
@@ -25,26 +26,26 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var gameListTableView: UITableView!
     
-//    var sharedContext: NSManagedObjectContext {
-//        return CoreDataStackManager.sharedInstance().managedObjectContext
-//    }
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
     
-//    lazy var temporaryObjectContext: NSManagedObjectContext = {
-//        let coordinator = CoreDataStackManager.sharedInstance().persistentStoreCoordinator
-//        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-//        managedObjectContext.persistentStoreCoordinator = coordinator
-//        return managedObjectContext
-//    }()
+    lazy var temporaryObjectContext: NSManagedObjectContext = {
+        let coordinator = CoreDataStackManager.sharedInstance().persistentStoreCoordinator
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = coordinator
+        return managedObjectContext
+    }()
     
-//    lazy var fetchedResultsController: NSFetchedResultsController = {
-//        let fetchRequest = NSFetchRequest(entityName: "Game")
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "imageURL", ascending: true)]
-//        fetchRequest.predicate = NSPredicate(format: "platform == %@", self.selectedPlatformTuple.name)
-//        
-//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.temporaryObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-//        
-//        return fetchedResultsController
-//    }()
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: "Game")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "imageURL", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "platform == %@", self.selectedPlatform)
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,6 +54,13 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !searchSeguePerformed {
+            try! fetchedResultsController.performFetch()
+            
+            fetchedResultsController.delegate = self
+        }
+        
         gameListTableView.reloadData()
     }
     
@@ -70,6 +78,31 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         gameWasSelectedAtIndexPath(indexPath)
+    }
+    
+    
+    // MARK - NSFetchedResultsController Delegate Methods
+    
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.gameListTableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            gameListTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        case .Delete:
+            gameListTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .Move:
+            gameListTableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+        default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.gameListTableView.endUpdates()
     }
     
     func gameWasSelectedAtIndexPath(indexPath: NSIndexPath) {
@@ -114,6 +147,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
             dispatch_async(dispatch_get_main_queue(), {
                 ImageHandler.sharedInstance.storeImageWithIdentifier(game.id, image: resultImage!)
                 cell.imageView?.image = game.gameImage
+                self.gameListTableView.reloadData()
             })
         }
     }

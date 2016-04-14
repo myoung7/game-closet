@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 class GameDetailViewController: UIViewController {
@@ -23,6 +24,30 @@ class GameDetailViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
+        addButton.enabled = false
+        
+        let platformDictionary = [
+            Platform.Keys.Name: currentGame.platform.name,
+            Platform.Keys.ID: currentGame.platform.id
+        ]
+        
+        let platform = Platform(dictionary: platformDictionary, context: sharedContext)
+        
+        let dictionary = [
+            Game.Keys.Name: currentGame.name,
+            Game.Keys.ID: currentGame.id,
+            Game.Keys.ImageURL: currentGame.imageURL,
+            Game.Keys.Info: currentGame.info,
+        ]
+        
+        let game = Game(dictionary: dictionary, context: sharedContext)
+        game.platform = platform
+        CoreDataStackManager.sharedInstance().saveContext()
+        print("Added game to collection!")
+    }
+    
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
     override func viewDidLoad() {

@@ -289,28 +289,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-oD-1PO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-oD-1PO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="3tc-Wc-Ugh"/>
                                                         <constraint firstAttribute="width" constant="125" id="HBq-m3-ny3"/>
                                                         <constraint firstAttribute="width" constant="125" id="IgZ-CT-hcB"/>
                                                         <constraint firstAttribute="width" constant="125" id="Wba-kz-hxZ"/>
+                                                        <constraint firstAttribute="width" constant="175" id="mO0-uH-MQZ"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="3tc-Wc-Ugh"/>
+                                                            <exclude reference="HBq-m3-ny3"/>
                                                             <exclude reference="IgZ-CT-hcB"/>
                                                             <exclude reference="Wba-kz-hxZ"/>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Video Game: The Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="l4b-BM-XtR">
-                                                    <rect key="frame" x="133" y="0.0" width="459" height="18"/>
+                                                    <rect key="frame" x="183" y="0.0" width="409" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zg9-NK-os4"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -320,7 +322,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a description of the game. In 20XX war was beginning." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk9-xC-hLm">
-                                                    <rect key="frame" x="133" y="34" width="459" height="65.5"/>
+                                                    <rect key="frame" x="183" y="34" width="409" height="65.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64.5" id="1cn-zc-apD"/>
                                                         <constraint firstAttribute="height" constant="65.5" id="Qo2-Gx-b9g"/>
@@ -341,7 +343,7 @@
                                                 <constraint firstItem="l4b-BM-XtR" firstAttribute="top" secondItem="0G5-wr-nkK" secondAttribute="topMargin" constant="-8" id="2PN-lP-EdO"/>
                                                 <constraint firstAttribute="bottom" secondItem="IoQ-oD-1PO" secondAttribute="bottom" id="5Mu-DZ-0zh"/>
                                                 <constraint firstItem="sk9-xC-hLm" firstAttribute="bottom" secondItem="0G5-wr-nkK" secondAttribute="bottomMargin" constant="8" id="7mM-0r-Ece"/>
-                                                <constraint firstItem="l4b-BM-XtR" firstAttribute="leading" secondItem="IoQ-oD-1PO" secondAttribute="trailing" priority="750" constant="8" id="A6u-K6-Fhm"/>
+                                                <constraint firstItem="l4b-BM-XtR" firstAttribute="leading" secondItem="IoQ-oD-1PO" secondAttribute="trailing" constant="8" id="A6u-K6-Fhm"/>
                                                 <constraint firstItem="IoQ-oD-1PO" firstAttribute="top" secondItem="0G5-wr-nkK" secondAttribute="top" id="BNi-BN-9dG"/>
                                                 <constraint firstItem="l4b-BM-XtR" firstAttribute="trailing" secondItem="0G5-wr-nkK" secondAttribute="trailingMargin" id="H3Y-ru-gTP"/>
                                                 <constraint firstItem="IoQ-oD-1PO" firstAttribute="leading" secondItem="0G5-wr-nkK" secondAttribute="leading" id="RTy-f5-Nu5"/>
@@ -349,7 +351,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="IoQ-oD-1PO" secondAttribute="bottom" id="bjX-0B-EfN"/>
                                                 <constraint firstItem="sk9-xC-hLm" firstAttribute="trailing" secondItem="0G5-wr-nkK" secondAttribute="trailingMargin" id="d59-vQ-9VX"/>
                                                 <constraint firstItem="IoQ-oD-1PO" firstAttribute="leading" secondItem="0G5-wr-nkK" secondAttribute="leading" id="tzY-8T-hXQ"/>
-                                                <constraint firstItem="sk9-xC-hLm" firstAttribute="leading" secondItem="IoQ-oD-1PO" secondAttribute="trailing" priority="750" constant="8" id="y1e-QW-fAQ"/>
+                                                <constraint firstItem="sk9-xC-hLm" firstAttribute="leading" secondItem="IoQ-oD-1PO" secondAttribute="trailing" constant="8" id="y1e-QW-fAQ"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -380,7 +382,7 @@
                             <constraint firstItem="Bde-1f-SO4" firstAttribute="top" secondItem="2MW-bx-4Cz" secondAttribute="bottom" id="a29-SV-u1u"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Shu-mO-Ekv"/>
+                    <navigationItem key="navigationItem" title="Browse" id="Shu-mO-Ekv"/>
                     <connections>
                         <outlet property="gameListTableView" destination="2MW-bx-4Cz" id="tsG-P7-G9n"/>
                         <outlet property="greyLoadingView" destination="jKz-vA-a8G" id="sK6-mr-cfp"/>

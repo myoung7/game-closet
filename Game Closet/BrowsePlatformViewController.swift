@@ -14,10 +14,13 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var browseTableView: UITableView!
     
     var platformsNamesOwnedArray: [String]?
+    var platformsOwnedArray: [Platform]?
     
-    var platformNamesArray: [String]! {
-        return PlatformsHandler.sharedInstance.namesArray
-    }
+    var selectedPlatformTuple: PlatformTuple!
+    
+//    var platformNamesArray: [String]! {
+//        return PlatformsHandler.sharedInstance.namesArray
+//    }
     
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
@@ -33,11 +36,10 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
         return fetchedResultsController
     }()
     
-    var selectedPlatform: (name: String, id: String)!
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         platformsNamesOwnedArray = getListOfPlatformNamesOwned()
+        browseTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -60,42 +62,34 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedPlatform = PlatformsHandler.sharedInstance.getPlatformTupleAtIndex(indexPath.row)!
+        let platformName = platformsNamesOwnedArray![indexPath.row]
+        selectedPlatformTuple = PlatformsHandler.sharedInstance.getPlatformTupleWithIdentifier(platformName)
         performSegueWithIdentifier("pushLetterSegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "pushLetterSegue" {
             let controller = segue.destinationViewController as! BrowseLetterViewController
-            controller.selectedPlatform = selectedPlatform
+            controller.selectedPlatform = selectedPlatformTuple
         }
     }
     
-    func getListOfPlatformNamesOwned() -> [String]{
+    func getListOfPlatformNamesOwned() -> [String]?{
         
-        var newPlatformNamesArray: [String] = []
+        var newPlatformNamesSet: Set<String> = []
         
-        try! fetchedResultsController.performFetch()
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("ERROR: Could not fetch data for Platforms in BrowsePlatformViewController.")
+            return nil
+        }
         let platforms = fetchedResultsController.fetchedObjects as! [Platform]
         for item in platforms {
-            for device in platformNamesArray {
-                if item.name == device {
-                    var alreadyInArray = false
-                    
-                    for object in platformNamesArray {
-                        if item.name == object {
-                            alreadyInArray = true
-                            break
-                        }
-                    }
-                    if alreadyInArray == false {
-                        newPlatformNamesArray.append(item.name)
-                    }
-                }
-            }
+            newPlatformNamesSet.insert(item.name)
         }
-        print(newPlatformNamesArray)
-        return newPlatformNamesArray
+        print(newPlatformNamesSet)
+        return Array(newPlatformNamesSet)
     }
     
 }
