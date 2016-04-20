@@ -33,7 +33,7 @@ class GameDetailViewController: UIViewController {
         
         let platform = Platform(dictionary: platformDictionary, context: sharedContext)
         
-        let dictionary = [
+        let dictionary: [String: AnyObject?] = [
             Game.Keys.Name: currentGame.name,
             Game.Keys.ID: currentGame.id,
             Game.Keys.ImageURL: currentGame.imageURL,
