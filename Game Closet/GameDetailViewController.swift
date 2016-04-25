@@ -23,6 +23,29 @@ class GameDetailViewController: UIViewController {
     @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
     }
     
+    lazy var gameIsInCollection: Bool = {
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            return false
+        }
+        if self.fetchedResultsController.fetchedObjects?.count > 0 {
+            return true
+        } else {
+            return false
+        }
+    }()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: "Game")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "imageURL", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "platform.name == %@ AND name == %@", self.currentGame.platform.name, self.currentGame.name)
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }()
+    
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         addButton.enabled = false
         
@@ -53,6 +76,9 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameDetails()
+        if gameIsInCollection {
+            addButton.enabled = false
+        }
     }
     
     func loadGameDetails() {
@@ -72,4 +98,5 @@ class GameDetailViewController: UIViewController {
             })
         }
     }
+    
 }
