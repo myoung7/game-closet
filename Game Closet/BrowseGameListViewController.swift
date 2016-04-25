@@ -18,7 +18,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     var gameList: [Game]!
     var selectedGameList = [Game]()
     var selectedGame: Game!
-//    var selectedLetter: String!
+    var selectedLetter: String!
     
     var searchSeguePerformed = false //True if view controller was loaded due to a segue from the SearchViewController.
     var multipleSelectEnabled = false
@@ -41,8 +41,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: "Game")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "imageURL", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "platform == %@", self.selectedPlatform)
-//        fetchRequest.predicate = NSPredicate(format: "name like %@", self.selectedLetter)
+        fetchRequest.predicate = NSPredicate(format: "platform.name == %@ AND name beginswith %@", self.selectedPlatform.name, self.selectedLetter)
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -58,12 +57,17 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         if !searchSeguePerformed {
+            
+            print(selectedPlatform.name)
+            
             try! fetchedResultsController.performFetch()
             
-//            if let objects = fetchedResultsController.fetchedObjects as? [Game] {
-//                gameList = objects
-//                gameListTableView.reloadData()
-//            }
+            if let objects = fetchedResultsController.fetchedObjects as? [Game] {
+                print(objects)
+                gameList = objects
+                print("Got game objects!")
+                gameListTableView.reloadData()
+            }
             
             fetchedResultsController.delegate = self
         }

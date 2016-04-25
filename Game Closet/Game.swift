@@ -25,6 +25,10 @@ class Game: NSManagedObject {
     @NSManaged var imageURL: String
     @NSManaged var platform: Platform
     
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
     init(dictionary: [String: AnyObject?], context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Game", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)

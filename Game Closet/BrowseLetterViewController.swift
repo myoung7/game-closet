@@ -8,16 +8,22 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class BrowseLetterViewController: UITableViewController {
     
     var selectedPlatform: (name: String, id: String)!
     
     var selectedFilter: String!
+    var selectedLetter: String!
     
     let alphabetArray: [String] = [
         "0-9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
         ]
+    
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,15 +46,24 @@ class BrowseLetterViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedFilter = alphabetArray[indexPath.row]
+        selectedLetter = alphabetArray[indexPath.row]
         performSegueWithIdentifier("pushGameViewController", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "pushGameViewController" {
             let controller = segue.destinationViewController as! BrowseGameListViewController
-//            controller.selectedPlatform = self.selectedPlatform
+            
+            let platform = [
+                Platform.Keys.Name: self.selectedPlatform.name,
+                Platform.Keys.ID: self.selectedPlatform.id
+            ]
+            
+            controller.selectedPlatform = Platform(dictionary: platform, context: self.sharedContext)
+            
             controller.filteredString = selectedFilter
-            controller.searchSeguePerformed = true
+            controller.selectedLetter = selectedLetter
+            controller.searchSeguePerformed = false
         }
     }
     
