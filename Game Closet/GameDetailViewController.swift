@@ -17,6 +17,7 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var gameImageView: UIImageView!
 
     @IBOutlet weak var gameInfoLabel: UILabel!
+    @IBOutlet weak var alreadyInCollectionLabel: UILabel!
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
@@ -78,6 +79,7 @@ class GameDetailViewController: UIViewController {
         loadGameDetails()
         if gameIsInCollection {
             addButton.enabled = false
+            alreadyInCollectionLabel.hidden = false
         }
     }
     
