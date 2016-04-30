@@ -70,7 +70,7 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "pushLetterSegue" {
             let controller = segue.destinationViewController as! BrowseLetterViewController
-            controller.selectedPlatform = selectedPlatformTuple
+            controller.selectedPlatformTuple = selectedPlatformTuple
         }
     }
     

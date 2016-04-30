@@ -12,7 +12,7 @@ import CoreData
 
 class BrowseLetterViewController: UITableViewController {
     
-    var selectedPlatform: (name: String, id: String)!
+    var selectedPlatformTuple: (name: String, id: String)!
     
     var selectedFilter: String!
     var selectedLetter: String!
@@ -21,32 +21,54 @@ class BrowseLetterViewController: UITableViewController {
         "0-9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
         ]
     
+    var arrayOfLetters = [String]()
+    
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
+    lazy var temporaryObjectContext: NSManagedObjectContext = {
+        let coordinator = CoreDataStackManager.sharedInstance().persistentStoreCoordinator
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = coordinator
+        return managedObjectContext
+    }()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: "Game")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "imageURL", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "platform.name == %@", self.selectedPlatformTuple.name)
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }()
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if let array = getArrayOfAvailableLetters() {
+            arrayOfLetters = array
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "\(selectedPlatform.name)"
+        navigationItem.title = "\(selectedPlatformTuple.name)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alphabetArray.count
+        return arrayOfLetters.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrowseCell")!
-        cell.textLabel?.text = alphabetArray[indexPath.row]
+        cell.textLabel?.text = arrayOfLetters[indexPath.row]
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedFilter = alphabetArray[indexPath.row]
-        selectedLetter = alphabetArray[indexPath.row]
+        selectedFilter = arrayOfLetters[indexPath.row]
+        selectedLetter = arrayOfLetters[indexPath.row]
         performSegueWithIdentifier("pushGameViewController", sender: self)
     }
     
@@ -55,16 +77,36 @@ class BrowseLetterViewController: UITableViewController {
             let controller = segue.destinationViewController as! BrowseGameListViewController
             
             let platform = [
-                Platform.Keys.Name: self.selectedPlatform.name,
-                Platform.Keys.ID: self.selectedPlatform.id
+                Platform.Keys.Name: self.selectedPlatformTuple.name,
+                Platform.Keys.ID: self.selectedPlatformTuple.id
             ]
             
-            controller.selectedPlatform = Platform(dictionary: platform, context: self.sharedContext)
+            controller.selectedPlatform = Platform(dictionary: platform, context: self.temporaryObjectContext)
             
             controller.filteredString = selectedFilter
             controller.selectedLetter = selectedLetter
             controller.searchSeguePerformed = false
         }
+    }
+    
+    func getArrayOfAvailableLetters() -> [String]? {
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            return nil
+        }
+        
+        let gamesArray = fetchedResultsController.fetchedObjects as! [Game]
+        var letterArraySet = Set<String>()
+        
+        for game in gamesArray {
+            let index = game.name.characters.startIndex
+            let firstLetter = String(game.name[index]).capitalizedString
+            letterArraySet.insert(firstLetter)
+        }
+        
+        return Array(letterArraySet)
     }
     
     //TODO: Add didSelect function for tableview to segue to the BrowseGameListViewController
