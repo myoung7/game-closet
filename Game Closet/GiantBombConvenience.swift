@@ -71,12 +71,15 @@ extension GiantBombClient {
             
             for game in resultDictionary {
                 
-                let imageDictionary = game[ResponseKeys.Image] as! [String: AnyObject]
+                let imageDictionary = game[ResponseKeys.Image] as? [String: AnyObject]
+                let smallImageURLPath = imageDictionary?[ResponseKeys.SmallImageURL] as? String
+                
+                let fullImageURL: String? = smallImageURLPath != nil ? "http://static.giantbomb.com\(smallImageURLPath!)" : nil
                 
                 let dictionary: [String: AnyObject?] = [
                     Game.Keys.Name: game[ResponseKeys.Name] as! String,
                     Game.Keys.Info: game[ResponseKeys.Deck] as? String,
-                    Game.Keys.ImageURL: "http://static.giantbomb.com\(imageDictionary[ResponseKeys.SmallImageURL] as! String)",
+                    Game.Keys.ImageURL: fullImageURL,
                     Game.Keys.ID: String(game[ResponseKeys.ID] as! Int)
                 ]
                 

@@ -89,7 +89,12 @@ class GameDetailViewController: UIViewController {
         
         gameInfoLabel.text = currentGame.info
         
-        GiantBombClient.sharedInstance.downloadImageWithURL(currentGame.imageURL) { (resultImage, errorString) in
+        guard let imageURL = currentGame.imageURL else {
+            print("No image URL found for \(currentGame.name)")
+            return
+        }
+        
+        GiantBombClient.sharedInstance.downloadImageWithURL(imageURL) { (resultImage, errorString) in
             guard errorString == nil else {
                 print(errorString!)
                 return

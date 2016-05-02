@@ -144,7 +144,11 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
             return
         }
         
-        GiantBombClient.sharedInstance.downloadImageWithURL(game.imageURL) { (resultImage, errorString) in
+        guard let imageURL = game.imageURL else {
+            return
+        }
+        
+        GiantBombClient.sharedInstance.downloadImageWithURL(imageURL) { (resultImage, errorString) in
             guard errorString == nil else {
                 print(errorString)
                 return

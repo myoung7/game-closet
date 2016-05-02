@@ -41,13 +41,13 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CON-6m-er7">
-                                <rect key="frame" x="20" y="327" width="64" height="19"/>
+                                <rect key="frame" x="20" y="327" width="63.5" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-xT-VmN">
-                                <rect key="frame" x="20" y="72" width="32" height="19"/>
+                                <rect key="frame" x="20" y="72" width="31.5" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -181,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2W3-2d-R6J">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.62352941179999999" green="0.66666666669999997" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BrowseCell" textLabel="fe1-5n-lvY" style="IBUITableViewCellStyleDefault" id="GXH-1N-IHO">
@@ -213,7 +213,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2W3-2d-R6J" secondAttribute="trailing" id="7VM-iQ-f17"/>
                             <constraint firstItem="2W3-2d-R6J" firstAttribute="top" secondItem="j2x-Us-bhQ" secondAttribute="bottom" constant="-64" id="9Io-ld-JBt"/>
-                            <constraint firstItem="hBn-P0-3Kl" firstAttribute="top" secondItem="2W3-2d-R6J" secondAttribute="bottom" id="tq3-4D-XSA"/>
+                            <constraint firstItem="hBn-P0-3Kl" firstAttribute="top" secondItem="2W3-2d-R6J" secondAttribute="bottom" constant="-49" id="tq3-4D-XSA"/>
                             <constraint firstItem="2W3-2d-R6J" firstAttribute="leading" secondItem="qhP-Nl-fBg" secondAttribute="leading" id="xcA-vh-cQP"/>
                         </constraints>
                     </view>
@@ -291,7 +291,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R1n-c4-XKP" id="0G5-wr-nkK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-oD-1PO">
