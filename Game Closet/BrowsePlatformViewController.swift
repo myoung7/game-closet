@@ -88,8 +88,8 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
         for item in platforms {
             newPlatformNamesSet.insert(item.name)
         }
-        print(newPlatformNamesSet)
-        return Array(newPlatformNamesSet)
+        
+        return Array(newPlatformNamesSet.sort())
     }
     
 }

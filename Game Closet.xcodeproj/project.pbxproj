@@ -110,8 +110,8 @@
 				610039CF1CB239EF00060FE3 /* BrowsePlatformViewController.swift */,
 				610039F21CB4284F00060FE3 /* BrowseLetterViewController.swift */,
 				610039FC1CB4B5D700060FE3 /* BrowseGameListViewController.swift */,
-				61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */,
 				610039E61CB23CBE00060FE3 /* SearchViewController.swift */,
+				61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */,
 				610039FA1CB4928700060FE3 /* PlatformsHandler.swift */,
 				6120A9CE1CBEE84500406D20 /* ImageHandler.swift */,
 			);
