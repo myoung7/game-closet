@@ -74,6 +74,8 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let platform = PlatformsHandler.sharedInstance.getPlatformTupleWithIdentifier(platformNamesArray[0])
+        selectedPlatformTuple = platform
         // Do any additional setup after loading the view, typically from a nib.
     }
     

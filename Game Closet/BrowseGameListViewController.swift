@@ -82,6 +82,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameListCell") as! GameListCell
         
+        cell.activityIndicator.startAnimating()
+        
         configureCell(cell: cell, indexPath: indexPath)
         
         return cell
@@ -134,35 +136,49 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     func configureCell(cell cell: GameListCell, indexPath: NSIndexPath) {
         
+        cell.gameImageView.image = nil
+        
         let game = gameList[indexPath.row]
         
         cell.gameNameTitleLabel.text = game.name
         cell.gameDescriptionTitleLabel.text = game.info
         
         guard game.gameImage == nil else {
-            cell.imageView?.image = game.gameImage
+//            cell.imageView?.image = game.gameImage
+            cell.setPostedImage(game.gameImage!)
+            cell.activityIndicator.stopAnimating()
             return
         }
         
         guard let imageURL = game.imageURL else {
+            cell.gameImageView.image = nil
+            cell.activityIndicator.stopAnimating()
             return
         }
         
         GiantBombClient.sharedInstance.downloadImageWithURL(imageURL) { (resultImage, errorString) in
             guard errorString == nil else {
                 print(errorString)
+                dispatch_async(dispatch_get_main_queue(), {
+                    cell.activityIndicator.stopAnimating()
+                })
                 return
             }
             
             guard resultImage != nil else {
                 print("ERROR: Image could not be loaded.")
+                dispatch_async(dispatch_get_main_queue(), {
+                    cell.activityIndicator.stopAnimating()
+                })
                 return
             }
             
             dispatch_async(dispatch_get_main_queue(), {
                 ImageHandler.sharedInstance.storeImageWithIdentifier(game.id, image: resultImage!)
-                cell.imageView?.image = game.gameImage
-                self.gameListTableView.reloadData()
+//                cell.imageView?.image = game.gameImage
+                cell.setPostedImage(game.gameImage!)
+                cell.activityIndicator.stopAnimating()
+//                self.gameListTableView.reloadData()
             })
         }
     }

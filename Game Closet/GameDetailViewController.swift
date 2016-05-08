@@ -100,8 +100,13 @@ class GameDetailViewController: UIViewController {
                 return
             }
             
+            guard let resultImage = resultImage else {
+                print("ERROR: Could not load image.")
+                return
+            }
+            
             dispatch_async(dispatch_get_main_queue(), {
-                self.gameImageView.image = resultImage!
+                self.gameImageView.image = resultImage
             })
         }
     }
