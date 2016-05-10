@@ -27,6 +27,23 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var gameListTableView: UITableView!
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    @IBAction func editButtonPressed(sender: UIBarButtonItem) {
+        if gameListTableView.editing {
+            if gameListTableView.indexPathsForSelectedRows == nil {
+                gameListTableView.editing = false
+                editButton.title = "Edit"
+                editButton.tintColor = nil
+            } else {
+                displayDeleteAlertMessage()
+            }
+        } else {
+            gameListTableView.editing = true
+            editButton.title = "Cancel"
+        }
+    }
+    
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
@@ -56,6 +73,11 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if searchSeguePerformed {
+            editButton.enabled = false
+            editButton.title = ""
+        }
+        
         if !searchSeguePerformed {
             
             print(selectedPlatform.name)
@@ -75,8 +97,41 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         gameListTableView.reloadData()
     }
     
+    func displayDeleteAlertMessage() {
+        let alertController = UIAlertController(title: "Delete Selected Games", message: "Are you sure you want to remove the selected games from your collection?", preferredStyle: .Alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { _ in
+            self.deleteSelectedGames()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { _ in
+            self.gameListTableView.editing = false
+            self.editButton.tintColor = nil
+            self.editButton.title = "Edit"
+        }
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteSelectedGames() {
+        if let indexPaths = gameListTableView.indexPathsForSelectedRows {
+            for index in indexPaths {
+                let game = fetchedResultsController.objectAtIndexPath(index) as! Game
+                sharedContext.deleteObject(game)
+            }
+        }
+        print("Deleted objects!")
+        gameListTableView.editing = false
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameList != nil ? gameList.count : 0
+        if !searchSeguePerformed {
+            let sectionInfo = self.fetchedResultsController.sections![section]
+            return sectionInfo.numberOfObjects
+        } else {
+            return gameList != nil ? gameList.count : 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,8 +144,20 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        if gameListTableView.indexPathsForSelectedRows == nil {
+            editButton.title = "Cancel"
+            editButton.tintColor = nil
+        }
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        gameWasSelectedAtIndexPath(indexPath)
+        if !gameListTableView.editing {
+            gameWasSelectedAtIndexPath(indexPath)
+        } else {
+            editButton.title = "Remove"
+            editButton.tintColor = UIColor.redColor()
+        }
     }
     
     
@@ -116,6 +183,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.gameListTableView.endUpdates()
+        CoreDataStackManager.sharedInstance().saveContext()
     }
     
     func gameWasSelectedAtIndexPath(indexPath: NSIndexPath) {

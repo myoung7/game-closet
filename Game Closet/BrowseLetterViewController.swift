@@ -49,6 +49,7 @@ class BrowseLetterViewController: UITableViewController {
         if let array = getArrayOfAvailableLetters() {
             arrayOfLetters = array
         }
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {

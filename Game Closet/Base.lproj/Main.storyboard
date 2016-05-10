@@ -41,13 +41,13 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CON-6m-er7">
-                                <rect key="frame" x="20" y="327" width="63.5" height="19"/>
+                                <rect key="frame" x="20" y="327" width="64" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-xT-VmN">
-                                <rect key="frame" x="20" y="72" width="31.5" height="19"/>
+                                <rect key="frame" x="20" y="72" width="32" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -291,7 +291,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R1n-c4-XKP" id="0G5-wr-nkK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Video Game: The Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="l4b-BM-XtR">
@@ -422,8 +422,15 @@
                             <constraint firstItem="Bde-1f-SO4" firstAttribute="top" secondItem="2MW-bx-4Cz" secondAttribute="bottom" id="a29-SV-u1u"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Browse" id="Shu-mO-Ekv"/>
+                    <navigationItem key="navigationItem" title="Browse" id="Shu-mO-Ekv">
+                        <barButtonItem key="rightBarButtonItem" title="Remove" id="XrP-pc-ZuT">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="MLL-HU-hqn" id="IMA-sd-1k4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="XrP-pc-ZuT" id="usR-Vk-u4z"/>
                         <outlet property="gameListTableView" destination="2MW-bx-4Cz" id="tsG-P7-G9n"/>
                         <outlet property="greyLoadingView" destination="jKz-vA-a8G" id="sK6-mr-cfp"/>
                         <segue destination="pQ1-fQ-5Vg" kind="show" identifier="gameSelectedSegue" id="AeF-uT-pHr"/>

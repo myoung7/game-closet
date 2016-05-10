@@ -49,4 +49,8 @@ class Game: NSManagedObject {
         }
     }
     
+    override func prepareForDeletion() {
+        print("Deleted game \(name)")
+    }
+    
 }
