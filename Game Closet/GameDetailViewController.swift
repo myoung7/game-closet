@@ -89,6 +89,11 @@ class GameDetailViewController: UIViewController {
         
         gameInfoLabel.text = currentGame.info
         
+        guard currentGame.gameImage == nil else {
+            gameImageView.image = currentGame.gameImage
+            return
+        }
+        
         guard let imageURL = currentGame.imageURL else {
             print("No image URL found for \(currentGame.name)")
             return
