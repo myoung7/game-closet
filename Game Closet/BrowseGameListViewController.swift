@@ -33,14 +33,13 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         if gameListTableView.editing {
             if gameListTableView.indexPathsForSelectedRows == nil {
                 gameListTableView.editing = false
-                editButton.title = "Edit"
-                editButton.tintColor = nil
+                setButtonToEdit()
             } else {
                 displayDeleteAlertMessage()
             }
         } else {
             gameListTableView.editing = true
-            editButton.title = "Cancel"
+            setButtonToCancel()
         }
     }
     
@@ -101,11 +100,11 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         let alertController = UIAlertController(title: "Delete Selected Games", message: "Are you sure you want to remove the selected games from your collection?", preferredStyle: .Alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { _ in
             self.deleteSelectedGames()
+            self.setButtonToEdit()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { _ in
             self.gameListTableView.editing = false
-            self.editButton.tintColor = nil
-            self.editButton.title = "Edit"
+            self.setButtonToEdit()
         }
         
         alertController.addAction(deleteAction)
@@ -136,6 +135,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameListCell") as! GameListCell
+        cell.selectionStyle = .Gray
         
         cell.activityIndicator.startAnimating()
         
@@ -146,8 +146,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if gameListTableView.indexPathsForSelectedRows == nil {
-            editButton.title = "Cancel"
-            editButton.tintColor = nil
+            setButtonToCancel()
         }
     }
     
@@ -155,8 +154,7 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         if !gameListTableView.editing {
             gameWasSelectedAtIndexPath(indexPath)
         } else {
-            editButton.title = "Remove"
-            editButton.tintColor = UIColor.redColor()
+            setButtonToDelete()
         }
     }
     
@@ -249,6 +247,21 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
 //                self.gameListTableView.reloadData()
             })
         }
+    }
+    
+    func setButtonToEdit() {
+        editButton.title = "Edit"
+        editButton.tintColor = nil
+    }
+    
+    func setButtonToCancel() {
+        editButton.title = "Cancel"
+        editButton.tintColor = nil
+    }
+    
+    func setButtonToDelete() {
+        editButton.title = "Delete"
+        editButton.tintColor = UIColor.redColor()
     }
     
 //    func getGames() {

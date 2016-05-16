@@ -105,7 +105,5 @@ class BrowseLetterViewController: UITableViewController {
         
         return Array(letterArraySet)
     }
-    
-    //TODO: Add didSelect function for tableview to segue to the BrowseGameListViewController
 
 }
