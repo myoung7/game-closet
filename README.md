@@ -2,7 +2,13 @@
 A collector's gaming collection should be organized and accessible at the tip of their fingers. With Game Closet, search through an online game database and add games you own to your gaming library. You can then organize and search through your own personal library to find the game you're looking for!
 
 ## Features
-Coming soon!
+- Search for games by name and platform using Giant Bomb's extensive online video game library.
+- Add and Remove games to/from personal collection.
+- View cover art and details about individual games.
+
+## Coming Soon
+- Share your favorite games with friends through iMessage/SMS, Email, and Twitter!
+- Highlight your favorite games in your personal collection by adding them to your Favorites list!
 
 ## Setup
 NOTE: You'll need your own Giant Bomb API Key.
@@ -13,6 +19,9 @@ NOTE: You'll need your own Giant Bomb API Key.
 - Replace value "INSERT_GIANT_BOMB_API_KEY_HERE" with your own Giant Bomb API Key.
 
 ## Current Status of App
-Currently in a pre-alpha stage.
+Currently in a beta stage.
+
+## Known Issues
+- Auto Layout Constraints breaking in the debug for the Game List Cells. Images are laid out correctly, but need to fix the error.
 
 **API Database created and hosted by Giant Bomb http://www.giantbomb.com/**
