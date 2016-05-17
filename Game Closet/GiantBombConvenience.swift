@@ -80,7 +80,8 @@ extension GiantBombClient {
                     Game.Keys.Name: game[ResponseKeys.Name] as! String,
                     Game.Keys.Info: game[ResponseKeys.Deck] as? String,
                     Game.Keys.ImageURL: fullImageURL,
-                    Game.Keys.ID: String(game[ResponseKeys.ID] as! Int)
+                    Game.Keys.ID: String(game[ResponseKeys.ID] as! Int),
+                    Game.Keys.SiteURL: game[ResponseKeys.SiteURL] as! String
                 ]
                 
                 let game = Game(dictionary: dictionary, context: context)

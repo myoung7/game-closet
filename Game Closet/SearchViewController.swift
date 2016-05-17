@@ -29,7 +29,7 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         let filters = [
             GiantBombClient.ParameterKeys.Filter: "\(GiantBombClient.ParameterKeys.Platforms):\(selectedPlatformTuple.id),\(GiantBombClient.ParameterKeys.Name):\(titleTextField.text!)",
-            GiantBombClient.ParameterKeys.FieldList: "\(GiantBombClient.ParameterKeys.Name),\(GiantBombClient.ParameterKeys.Image),\(GiantBombClient.ParameterKeys.Deck),\(GiantBombClient.ParameterKeys.ID)"
+            GiantBombClient.ParameterKeys.FieldList: "\(GiantBombClient.ParameterKeys.Name),\(GiantBombClient.ParameterKeys.Image),\(GiantBombClient.ParameterKeys.Deck),\(GiantBombClient.ParameterKeys.ID),\(GiantBombClient.ParameterKeys.SiteURL)"
         ]
         
         let platformDictionary = [

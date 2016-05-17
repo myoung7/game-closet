@@ -463,7 +463,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vo0-hw-TCz">
                                 <rect key="frame" x="0.0" y="64" width="600" height="190.5"/>
-                                <color key="backgroundColor" red="0.78329288029999999" green="0.79097222219999996" blue="0.79097222219999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.51050501420000005" green="0.5234173661" blue="0.53367660979999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Video Game description. This is about the game you are viewing. It is quite good." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Y0G-te-Mgp">
                                 <rect key="frame" x="20" y="289" width="560" height="190.5"/>
@@ -479,12 +479,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.thewebsitewhereyoucanviewmoreinfoaboutgame.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5E-LI-BY4">
-                                <rect key="frame" x="20" y="488" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="already in collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-DY-VTN">
                                 <rect key="frame" x="20" y="262" width="560" height="19"/>
                                 <color key="backgroundColor" red="0.51050501420000005" green="0.5234173661" blue="0.53367660979999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -499,6 +493,18 @@
                                     <color key="titleColor" red="0.45778723592831488" green="0.55809029596549586" blue="0.63778403012424234" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D03-DN-sYY">
+                                <rect key="frame" x="20" y="487" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cqT-SQ-YS3"/>
+                                </constraints>
+                                <state key="normal" title="http://www.giantbomb.com">
+                                    <color key="titleColor" red="0.45778723589999998" green="0.55809029600000004" blue="0.63778403009999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="siteURLButtonPressed" destination="pQ1-fQ-5Vg" eventType="touchUpInside" id="Xgl-ae-Ayz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78329288029999999" green="0.79097222219999996" blue="0.79097222219999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -506,19 +512,19 @@
                             <constraint firstAttribute="trailing" secondItem="vo0-hw-TCz" secondAttribute="trailing" id="55C-9u-Xp0"/>
                             <constraint firstItem="vo0-hw-TCz" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leading" id="8Sm-2c-C6e"/>
                             <constraint firstItem="Y0G-te-Mgp" firstAttribute="trailing" secondItem="7iM-nK-Y8j" secondAttribute="trailingMargin" id="Fre-TC-lJv"/>
-                            <constraint firstItem="onJ-bW-1ZM" firstAttribute="top" secondItem="Y5E-LI-BY4" secondAttribute="bottom" constant="42" id="ItT-mh-H1f"/>
+                            <constraint firstItem="D03-DN-sYY" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leadingMargin" id="GXT-6y-hXo"/>
                             <constraint firstItem="zbl-DY-VTN" firstAttribute="trailing" secondItem="7iM-nK-Y8j" secondAttribute="trailingMargin" id="JSP-y9-s3N"/>
                             <constraint firstItem="QzH-sL-fIu" firstAttribute="trailing" secondItem="7iM-nK-Y8j" secondAttribute="trailingMargin" id="NP3-Ky-Y57"/>
                             <constraint firstItem="Y0G-te-Mgp" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leadingMargin" id="Srr-Gg-oiU"/>
                             <constraint firstItem="vo0-hw-TCz" firstAttribute="top" secondItem="iH6-Ty-neF" secondAttribute="bottom" id="T86-Cg-xjK"/>
+                            <constraint firstItem="QzH-sL-fIu" firstAttribute="top" secondItem="D03-DN-sYY" secondAttribute="bottom" constant="8" id="Thi-47-b9E"/>
+                            <constraint firstItem="D03-DN-sYY" firstAttribute="top" secondItem="Y0G-te-Mgp" secondAttribute="bottom" constant="7.5" id="V0s-fG-rMa"/>
                             <constraint firstItem="Y0G-te-Mgp" firstAttribute="height" secondItem="vo0-hw-TCz" secondAttribute="height" id="b7Q-dS-lPL"/>
+                            <constraint firstItem="D03-DN-sYY" firstAttribute="trailing" secondItem="7iM-nK-Y8j" secondAttribute="trailingMargin" id="gtG-ux-3K3"/>
                             <constraint firstItem="Y0G-te-Mgp" firstAttribute="top" secondItem="zbl-DY-VTN" secondAttribute="bottom" constant="8" id="h6G-t6-iBe"/>
-                            <constraint firstItem="Y5E-LI-BY4" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leadingMargin" id="ibg-Vm-TrQ"/>
                             <constraint firstItem="onJ-bW-1ZM" firstAttribute="top" secondItem="QzH-sL-fIu" secondAttribute="bottom" id="kdm-hk-8ZX"/>
                             <constraint firstItem="zbl-DY-VTN" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leadingMargin" id="obA-mz-IzE"/>
-                            <constraint firstItem="Y5E-LI-BY4" firstAttribute="trailing" secondItem="7iM-nK-Y8j" secondAttribute="trailingMargin" id="rFw-RF-TJO"/>
                             <constraint firstItem="zbl-DY-VTN" firstAttribute="top" secondItem="vo0-hw-TCz" secondAttribute="bottom" constant="8" id="u3k-5k-PEw"/>
-                            <constraint firstItem="Y5E-LI-BY4" firstAttribute="top" secondItem="Y0G-te-Mgp" secondAttribute="bottom" constant="8" id="yvc-9o-MBv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Title" id="eTe-HP-kg3">
@@ -540,6 +546,7 @@
                         <outlet property="alreadyInCollectionLabel" destination="zbl-DY-VTN" id="MJm-xl-gtf"/>
                         <outlet property="gameImageView" destination="vo0-hw-TCz" id="PbB-fs-IAs"/>
                         <outlet property="gameInfoLabel" destination="Y0G-te-Mgp" id="zb9-qv-a8S"/>
+                        <outlet property="siteURLButton" destination="D03-DN-sYY" id="WV1-Ao-eev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1St-Z9-6Wv" userLabel="First Responder" sceneMemberID="firstResponder"/>

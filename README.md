@@ -5,9 +5,9 @@ A collector's gaming collection should be organized and accessible at the tip of
 - Search for games by name and platform using Giant Bomb's extensive online video game library.
 - Add and Remove games to/from personal collection.
 - View cover art and details about individual games.
+- Share a link to your favorite game's details with others through iMessage/SMS, Email, and Twitter!
 
 ## Coming Soon
-- Share your favorite games with friends through iMessage/SMS, Email, and Twitter!
 - Highlight your favorite games in your personal collection by adding them to your Favorites list!
 
 ## Setup

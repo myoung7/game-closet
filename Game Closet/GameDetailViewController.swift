@@ -20,8 +20,21 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var alreadyInCollectionLabel: UILabel!
     
     @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var siteURLButton: UIButton!
     
     @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
+        
+        let shareString = ["Check out this game from my Game Closet: '\(currentGame.name)' on \(currentGame.platform.name) \(currentGame.siteURL)"]
+        let excludedActivities = [UIActivityTypePrint, UIActivityTypeAirDrop, UIActivityTypePostToFacebook]
+        
+        let activityController = UIActivityViewController(activityItems: shareString, applicationActivities: nil)
+        activityController.excludedActivityTypes = excludedActivities
+        
+        presentViewController(activityController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func siteURLButtonPressed() {
     }
     
     lazy var gameIsInCollection: Bool = {
@@ -62,6 +75,7 @@ class GameDetailViewController: UIViewController {
             Game.Keys.ID: currentGame.id,
             Game.Keys.ImageURL: currentGame.imageURL,
             Game.Keys.Info: currentGame.info,
+            Game.Keys.SiteURL: currentGame.siteURL
         ]
         
         let game = Game(dictionary: dictionary, context: sharedContext)
@@ -88,6 +102,7 @@ class GameDetailViewController: UIViewController {
         navigationItem.title = currentGame.name
         
         gameInfoLabel.text = currentGame.info
+        siteURLButton.setTitle(currentGame.siteURL, forState: .Normal)
         
         guard currentGame.gameImage == nil else {
             gameImageView.image = currentGame.gameImage

@@ -17,12 +17,14 @@ class Game: NSManagedObject {
         static let ID = "id"
         static let Info = "info"
         static let ImageURL = "imageURL"
+        static let SiteURL = "siteURL"
     }
     
     @NSManaged var name: String
     @NSManaged var id: String
     @NSManaged var info: String?
     @NSManaged var imageURL: String?
+    @NSManaged var siteURL: String
     @NSManaged var platform: Platform
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -37,6 +39,7 @@ class Game: NSManagedObject {
         id = dictionary[Keys.ID] as! String
         info = dictionary[Keys.Info] as? String
         imageURL = dictionary[Keys.ImageURL] as? String
+        siteURL = dictionary[Keys.SiteURL] as! String
     }
     
     var gameImage: UIImage? {
