@@ -28,6 +28,7 @@ extension GiantBombClient {
         }
         
         static let SecureBaseURL = "https://www.giantbomb.com/api/"
+        static let GiantBombURL = "http://www.giantbomb.com"
     }
     
     struct Methods {

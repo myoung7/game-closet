@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import SafariServices
 
 class GameDetailViewController: UIViewController {
     
@@ -22,6 +23,10 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var siteURLButton: UIButton!
     
+    @IBAction func giantBombURLButton() {
+        UIApplication.sharedApplication().openURL(NSURL(string: GiantBombClient.Constants.GiantBombURL)!)
+    }
+    
     @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
         
         let shareString = ["Check out this game from my Game Closet: '\(currentGame.name)' on \(currentGame.platform.name) \(currentGame.siteURL)"]
@@ -31,10 +36,11 @@ class GameDetailViewController: UIViewController {
         activityController.excludedActivityTypes = excludedActivities
         
         presentViewController(activityController, animated: true, completion: nil)
-        
     }
     
     @IBAction func siteURLButtonPressed() {
+        let webViewController = SFSafariViewController(URL: NSURL(string: currentGame.siteURL)!)
+        presentViewController(webViewController, animated: true, completion: nil)
     }
     
     lazy var gameIsInCollection: Bool = {

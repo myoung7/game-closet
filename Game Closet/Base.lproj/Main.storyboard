@@ -492,6 +492,9 @@
                                 <state key="normal" title="Information and Artwork provided by Giant Bomb">
                                     <color key="titleColor" red="0.45778723592831488" green="0.55809029596549586" blue="0.63778403012424234" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="giantBombURLButton" destination="pQ1-fQ-5Vg" eventType="touchUpInside" id="M8Q-IJ-DKL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D03-DN-sYY">
                                 <rect key="frame" x="20" y="487" width="560" height="30"/>
