@@ -29,6 +29,9 @@
 		61003A061CB6231600060FE3 /* GameListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61003A051CB6231600060FE3 /* GameListCell.swift */; };
 		61003A0B1CB965A800060FE3 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */; };
 		6120A9CF1CBEE84500406D20 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120A9CE1CBEE84500406D20 /* ImageHandler.swift */; };
+		619E31241CF2C69D00B3DB6E /* game_closet_icon_iphone_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 619E31211CF2C69D00B3DB6E /* game_closet_icon_iphone_2x.png */; };
+		619E31251CF2C69D00B3DB6E /* game_closet_icon_iphone_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 619E31221CF2C69D00B3DB6E /* game_closet_icon_iphone_3x.png */; };
+		619E31261CF2C69D00B3DB6E /* game_closet_icon_spotlight_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 619E31231CF2C69D00B3DB6E /* game_closet_icon_spotlight_2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		61003A051CB6231600060FE3 /* GameListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListCell.swift; sourceTree = "<group>"; };
 		61003A0A1CB965A800060FE3 /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		6120A9CE1CBEE84500406D20 /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
+		619E31211CF2C69D00B3DB6E /* game_closet_icon_iphone_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_closet_icon_iphone_2x.png; sourceTree = "<group>"; };
+		619E31221CF2C69D00B3DB6E /* game_closet_icon_iphone_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_closet_icon_iphone_3x.png; sourceTree = "<group>"; };
+		619E31231CF2C69D00B3DB6E /* game_closet_icon_spotlight_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_closet_icon_spotlight_2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		610039CC1CB239EF00060FE3 /* Game Closet */ = {
 			isa = PBXGroup;
 			children = (
+				619E31141CF1305D00B3DB6E /* Icon */,
 				61003A071CB6232300060FE3 /* View */,
 				610039E21CB23BC600060FE3 /* Keys.plist */,
 				610039E31CB23BC600060FE3 /* Keys.sample.plist */,
@@ -145,6 +152,16 @@
 				61003A051CB6231600060FE3 /* GameListCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		619E31141CF1305D00B3DB6E /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				619E31211CF2C69D00B3DB6E /* game_closet_icon_iphone_2x.png */,
+				619E31221CF2C69D00B3DB6E /* game_closet_icon_iphone_3x.png */,
+				619E31231CF2C69D00B3DB6E /* game_closet_icon_spotlight_2x.png */,
+			);
+			name = Icon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,12 +222,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619E31261CF2C69D00B3DB6E /* game_closet_icon_spotlight_2x.png in Resources */,
+				619E31251CF2C69D00B3DB6E /* game_closet_icon_iphone_3x.png in Resources */,
 				610039E41CB23BC600060FE3 /* Keys.plist in Resources */,
 				610039DB1CB239EF00060FE3 /* LaunchScreen.storyboard in Resources */,
 				610039F91CB48EF800060FE3 /* platforms.plist in Resources */,
 				610039D81CB239EF00060FE3 /* Assets.xcassets in Resources */,
 				610039E51CB23BC600060FE3 /* Keys.sample.plist in Resources */,
 				610039D31CB239EF00060FE3 /* Main.storyboard in Resources */,
+				619E31241CF2C69D00B3DB6E /* game_closet_icon_iphone_2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +375,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MatthewYoung.Game-Closet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,6 +387,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MatthewYoung.Game-Closet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -95,15 +95,17 @@ class BrowseLetterViewController: UITableViewController {
         }
         
         let gamesArray = fetchedResultsController.fetchedObjects as! [Game]
-        var letterArraySet = Set<String>()
+        var letterSet = Set<String>()
         
         for game in gamesArray {
             let index = game.name.characters.startIndex
             let firstLetter = String(game.name[index]).capitalizedString
-            letterArraySet.insert(firstLetter)
+            letterSet.insert(firstLetter)
         }
         
-        return Array(letterArraySet)
+        let sortedLetterSet = letterSet.sort()
+        
+        return Array(sortedLetterSet)
     }
 
 }

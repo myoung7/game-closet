@@ -66,7 +66,6 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        getGames()
     }
     
     override func viewDidLoad() {
@@ -210,7 +209,6 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         cell.gameDescriptionTitleLabel.text = game.info
         
         guard game.gameImage == nil else {
-//            cell.imageView?.image = game.gameImage
             cell.setPostedImage(game.gameImage!)
             cell.activityIndicator.stopAnimating()
             return
@@ -241,10 +239,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
             
             dispatch_async(dispatch_get_main_queue(), {
                 ImageHandler.sharedInstance.storeImageWithIdentifier(game.id, image: resultImage!)
-//                cell.imageView?.image = game.gameImage
                 cell.setPostedImage(game.gameImage!)
                 cell.activityIndicator.stopAnimating()
-//                self.gameListTableView.reloadData()
             })
         }
     }
@@ -263,23 +259,5 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         editButton.title = "Delete"
         editButton.tintColor = UIColor.redColor()
     }
-    
-//    func getGames() {
-//        let parameters = [
-//            GiantBombClient.ParameterKeys.Filter:
-//                "\(GiantBombClient.ParameterKeys.Name):\(filteredString),\(GiantBombClient.ParameterKeys.Platforms):\(selectedPlatform.id)"
-//        ]
-//        
-//        GiantBombClient.sharedInstance.getGameListWithFilters(parameters, context: temporaryObjectContext) { (result, errorString) in
-//            guard errorString == nil else {
-//                print(errorString!)
-//                return
-//            }
-//            
-//            
-//        }
-//    }
-    
-    //TODO: Finish setting up
     
 }

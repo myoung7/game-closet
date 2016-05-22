@@ -18,10 +18,6 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     
     var selectedPlatformTuple: PlatformTuple!
     
-//    var platformNamesArray: [String]! {
-//        return PlatformsHandler.sharedInstance.namesArray
-//    }
-    
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
@@ -29,7 +25,6 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: "Platform")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//        fetchRequest.predicate = NSPredicate(format: "platform == %@", self.selectedPlatform.name)
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
         
