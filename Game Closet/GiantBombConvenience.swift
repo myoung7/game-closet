@@ -62,7 +62,7 @@ extension GiantBombClient {
             }
             
             guard let result = result as? [String: AnyObject] else {
-                completionHandler(result: nil, errorString: "ERROR: Data not found.")
+                completionHandler(result: nil, errorString: "No results were found.")
                 return
             }
             

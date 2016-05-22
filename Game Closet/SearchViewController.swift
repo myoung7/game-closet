@@ -24,37 +24,8 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBAction func searchButtonPressed(sender: UIButton) {
-        
         greyLoadingView.hidden = false
-        
-        let filters = [
-            GiantBombClient.ParameterKeys.Filter: "\(GiantBombClient.ParameterKeys.Platforms):\(selectedPlatformTuple.id),\(GiantBombClient.ParameterKeys.Name):\(titleTextField.text!)",
-            GiantBombClient.ParameterKeys.FieldList: "\(GiantBombClient.ParameterKeys.Name),\(GiantBombClient.ParameterKeys.Image),\(GiantBombClient.ParameterKeys.Deck),\(GiantBombClient.ParameterKeys.ID),\(GiantBombClient.ParameterKeys.SiteURL)"
-        ]
-        
-        let platformDictionary = [
-            Platform.Keys.Name: selectedPlatformTuple.name,
-            Platform.Keys.ID: selectedPlatformTuple.id
-        ]
-        
-        let platform = Platform(dictionary: platformDictionary, context: self.temporaryObjectContext)
-        selectedPlatform = platform
-        
-        GiantBombClient.sharedInstance.getGameListWithFilters(filters, platform: platform,context: self.temporaryObjectContext) { (result, errorString) in
-            guard errorString == nil else {
-                print(errorString)
-                return
-            }
-            
-            self.gameList = result as! [Game]
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.greyLoadingView.hidden = true
-                self.performSegueWithIdentifier("searchBrowseGameSegue", sender: self)
-            })
-            
-        }
-        
+        searchForGameList()
     }
     
     @IBAction func tapGestureRecognized(sender: UITapGestureRecognizer) {
@@ -100,6 +71,56 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let platform = PlatformsHandler.sharedInstance.getPlatformTupleWithIdentifier(platformNamesArray[row])
         selectedPlatformTuple = platform
         print(selectedPlatformTuple.name)
+    }
+    
+    func searchForGameList() {
+        
+        let filters = [
+            GiantBombClient.ParameterKeys.Filter: "\(GiantBombClient.ParameterKeys.Platforms):\(selectedPlatformTuple.id),\(GiantBombClient.ParameterKeys.Name):\(titleTextField.text!)",
+            GiantBombClient.ParameterKeys.FieldList: "\(GiantBombClient.ParameterKeys.Name),\(GiantBombClient.ParameterKeys.Image),\(GiantBombClient.ParameterKeys.Deck),\(GiantBombClient.ParameterKeys.ID),\(GiantBombClient.ParameterKeys.SiteURL)"
+        ]
+        
+        let platformDictionary = [
+            Platform.Keys.Name: selectedPlatformTuple.name,
+            Platform.Keys.ID: selectedPlatformTuple.id
+        ]
+        
+        let platform = Platform(dictionary: platformDictionary, context: self.temporaryObjectContext)
+        selectedPlatform = platform
+        
+        GiantBombClient.sharedInstance.getGameListWithFilters(filters, platform: platform,context: self.temporaryObjectContext) { (result, errorString) in
+            guard errorString == nil else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.displayErrorMessage(errorString!)
+                    self.greyLoadingView.hidden = true
+                })
+                return
+            }
+            
+            guard result.count > 0 else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.displayErrorMessage("No results found.")
+                    self.greyLoadingView.hidden = true
+                })
+                return
+            }
+            
+            self.gameList = result as! [Game]
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.greyLoadingView.hidden = true
+                self.performSegueWithIdentifier("searchBrowseGameSegue", sender: self)
+            })
+            
+        }
+    }
+    
+    func displayErrorMessage(messageString: String) {
+        let alertController = UIAlertController(title: "Search Failed", message: messageString, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(action)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
