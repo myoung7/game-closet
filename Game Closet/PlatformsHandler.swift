@@ -32,24 +32,6 @@ class PlatformsHandler {
         print("ERROR: Could not load Platforms.plist file.")
         return nil
     }
-
-//    var idsArray: [String]? {
-//        var arrayOfPlatforms: [String] = []
-//        
-//        if let path = NSBundle.mainBundle().pathForResource("platforms", ofType: "plist") {
-//            if let data = NSDictionary(contentsOfFile: path) {
-//                if let platforms = data["platforms"] as? [[String: AnyObject]] {
-//                    for dictionary in platforms {
-//                        let id = dictionary["id"] as! Int
-//                        arrayOfPlatforms.append(String(id))
-//                    }
-//                    return arrayOfPlatforms
-//                }
-//            }
-//        }
-//        print("ERROR: Could not load Platforms.plist file.")
-//        return nil
-//    }
     
     var platformTuples: [PlatformTuple]? {
         var platTuples = [PlatformTuple]()
@@ -71,14 +53,6 @@ class PlatformsHandler {
         print("ERROR: Could not load Platforms.plist file.")
         return nil
     }
-    
-//    func getPlatformTupleAtIndex(index: Int) -> PlatformTuple? {
-//        if namesArray?[index] != nil && idsArray?[index] != nil {
-//            return (namesArray![index], idsArray![index])
-//        } else {
-//            return nil
-//        }
-//    }
     
     func getPlatformTupleWithIdentifier(identifier: String) -> PlatformTuple? {
         guard let platformTuples = platformTuples else {

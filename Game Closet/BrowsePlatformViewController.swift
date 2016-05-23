@@ -31,6 +31,8 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
         return fetchedResultsController
     }()
     
+    //MARK: - Life Cycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         platformsNamesOwnedArray = getListOfPlatformNamesOwned()
@@ -42,6 +44,8 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
         browseTableView.delegate = self
         
     }
+    
+    //MARK: - Table View Delegate/Data Source Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return platformsNamesOwnedArray != nil ? platformsNamesOwnedArray!.count : 0
@@ -68,6 +72,8 @@ class BrowsePlatformViewController: UIViewController, UITableViewDelegate, UITab
             controller.selectedPlatformTuple = selectedPlatformTuple
         }
     }
+    
+    //MARK: - Get the list of all platform names in personal collection.
     
     func getListOfPlatformNamesOwned() -> [String]?{
         

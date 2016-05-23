@@ -40,6 +40,8 @@ class BrowseLetterViewController: UITableViewController {
         return fetchedResultsController
     }()
     
+    //MARK: - Life Cycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let array = getArrayOfAvailableLetters() {
@@ -52,6 +54,8 @@ class BrowseLetterViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "\(selectedPlatformTuple.name)"
     }
+    
+    //MARK: - Table View Delegate/Data Source Methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfLetters.count
@@ -85,6 +89,8 @@ class BrowseLetterViewController: UITableViewController {
             controller.searchSeguePerformed = false
         }
     }
+    
+    //MARK: - Get an array of the first letters for each game for selected platform.
     
     func getArrayOfAvailableLetters() -> [String]? {
         

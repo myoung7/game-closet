@@ -68,31 +68,14 @@ class GameDetailViewController: UIViewController {
     
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         addButton.enabled = false
-        
-        let platformDictionary = [
-            Platform.Keys.Name: currentGame.platform.name,
-            Platform.Keys.ID: currentGame.platform.id
-        ]
-        
-        let platform = Platform(dictionary: platformDictionary, context: sharedContext)
-        
-        let dictionary: [String: AnyObject?] = [
-            Game.Keys.Name: currentGame.name,
-            Game.Keys.ID: currentGame.id,
-            Game.Keys.ImageURL: currentGame.imageURL,
-            Game.Keys.Info: currentGame.info,
-            Game.Keys.SiteURL: currentGame.siteURL
-        ]
-        
-        let game = Game(dictionary: dictionary, context: sharedContext)
-        game.platform = platform
-        CoreDataStackManager.sharedInstance().saveContext()
-        print("Added game to collection!")
+        addGameToCollection()
     }
     
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +85,8 @@ class GameDetailViewController: UIViewController {
             alreadyInCollectionLabel.hidden = false
         }
     }
+    
+    // MARK: - Loads the details of the selected game.
     
     func loadGameDetails() {
         
@@ -135,6 +120,30 @@ class GameDetailViewController: UIViewController {
                 self.gameImageView.image = resultImage
             })
         }
+    }
+    
+    // MARK: - Adds game to personal collection.
+    
+    func addGameToCollection() {
+        let platformDictionary = [
+            Platform.Keys.Name: currentGame.platform.name,
+            Platform.Keys.ID: currentGame.platform.id
+        ]
+        
+        let platform = Platform(dictionary: platformDictionary, context: sharedContext)
+        
+        let dictionary: [String: AnyObject?] = [
+            Game.Keys.Name: currentGame.name,
+            Game.Keys.ID: currentGame.id,
+            Game.Keys.ImageURL: currentGame.imageURL,
+            Game.Keys.Info: currentGame.info,
+            Game.Keys.SiteURL: currentGame.siteURL
+        ]
+        
+        let game = Game(dictionary: dictionary, context: sharedContext)
+        game.platform = platform
+        CoreDataStackManager.sharedInstance().saveContext()
+        print("Added game to collection!")
     }
     
 }

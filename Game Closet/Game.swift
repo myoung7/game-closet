@@ -53,6 +53,12 @@ class Game: NSManagedObject {
     }
     
     override func prepareForDeletion() {
+        do {
+            try NSFileManager.defaultManager().removeItemAtURL(ImageHandler.sharedInstance.generateImagePathURL(id))
+            print("Image \(id) deleted!")
+        } catch {
+            print("ERROR: Image \(id) could not be deleted.")
+        }
         print("Deleted game \(name)")
     }
     

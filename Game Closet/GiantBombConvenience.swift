@@ -48,6 +48,8 @@ extension GiantBombClient {
         
     }
     
+    //MARK: - Gets a list of games using the specified filters from Giant Bomb.
+    
     func getGameListWithFilters(filters: [String: AnyObject], platform: Platform, context: NSManagedObjectContext, completionHandler: ResultErrorStringCompletionHandler) {
         let method = Methods.Games
         

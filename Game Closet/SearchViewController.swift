@@ -43,6 +43,8 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return PlatformsHandler.sharedInstance.namesArray
     }
     
+    //MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let platform = PlatformsHandler.sharedInstance.getPlatformTupleWithIdentifier(platformNamesArray[0])
@@ -50,10 +52,7 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    //MARK: - Picker View Delegate Methods
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return platformNamesArray[row]
@@ -72,6 +71,8 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         selectedPlatformTuple = platform
         print(selectedPlatformTuple.name)
     }
+    
+    //MARK: - Search for the list of games with specified filters.
     
     func searchForGameList() {
         

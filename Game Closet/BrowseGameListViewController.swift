@@ -64,6 +64,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         return fetchedResultsController
     }()
     
+    // MARK: - Life Cycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -112,6 +114,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - Remove selected games from personal collection.
+    
     func deleteSelectedGames() {
         if let indexPaths = gameListTableView.indexPathsForSelectedRows {
             for index in indexPaths {
@@ -122,6 +126,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         print("Deleted objects!")
         gameListTableView.editing = false
     }
+    
+    // MARK: - Table View Delegate/Data Source Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !searchSeguePerformed {
@@ -198,6 +204,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
             controller.currentGame = selectedGame
         }
     }
+    
+    // MARK: - Configure Table View Cells
     
     func configureCell(cell cell: GameListCell, indexPath: NSIndexPath) {
         
