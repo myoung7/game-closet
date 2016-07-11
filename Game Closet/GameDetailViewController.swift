@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreImage
 import UIKit
 import SafariServices
 
@@ -16,6 +17,7 @@ class GameDetailViewController: UIViewController {
     var currentGame: Game!
     
     @IBOutlet weak var gameImageView: UIImageView!
+    @IBOutlet weak var backgroundGameImageView: UIImageView!
 
     @IBOutlet weak var gameInfoLabel: UILabel!
     @IBOutlet weak var alreadyInCollectionLabel: UILabel!
@@ -69,6 +71,7 @@ class GameDetailViewController: UIViewController {
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         addButton.enabled = false
         addGameToCollection()
+        changeAlreadyInCollectionLabel()
     }
     
     var sharedContext: NSManagedObjectContext {
@@ -80,13 +83,22 @@ class GameDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameDetails()
+        setImageViewBackground()
         if gameIsInCollection {
             addButton.enabled = false
             alreadyInCollectionLabel.hidden = false
+        } else {
+            alreadyInCollectionLabel.hidden = true
         }
     }
     
     // MARK: - Loads the details of the selected game.
+    
+    func changeAlreadyInCollectionLabel() {
+        UIView.animateWithDuration(1) { 
+            self.alreadyInCollectionLabel.hidden = !self.alreadyInCollectionLabel.hidden
+        }
+    }
     
     func loadGameDetails() {
         
@@ -144,6 +156,23 @@ class GameDetailViewController: UIViewController {
         game.platform = platform
         CoreDataStackManager.sharedInstance().saveContext()
         print("Added game to collection!")
+    }
+    
+    func setImageViewBackground() {
+        
+        guard let currentGameImage = currentGame.gameImage else {
+            print("ERROR: No game image found.")
+            return
+        }
+        
+        if let backgroundImage = CIImage(image: currentGameImage) {
+            let gaussianBlurFilter = CIFilter(name: "CIGaussianBlur")
+            gaussianBlurFilter?.setDefaults()
+            gaussianBlurFilter?.setValue(backgroundImage, forKey: kCIInputImageKey)
+            gaussianBlurFilter?.setValue(15, forKey: kCIInputRadiusKey)
+            backgroundGameImageView.image = UIImage(CIImage: (gaussianBlurFilter?.outputImage)!)
+            backgroundGameImageView.contentMode = .ScaleToFill
+        }
     }
     
 }
