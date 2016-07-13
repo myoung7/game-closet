@@ -75,8 +75,10 @@ extension GiantBombClient {
                 
                 let imageDictionary = game[ResponseKeys.Image] as? [String: AnyObject]
                 let smallImageURLPath = imageDictionary?[ResponseKeys.SmallImageURL] as? String
+                let updatedSmallImageURLPath = smallImageURLPath?.stringByReplacingOccurrencesOfString(Constants.SecureBaseURL, withString: Constants.UpdatedBaseImageURL)
                 
-                let fullImageURL: String? = smallImageURLPath != nil ? "http://static.giantbomb.com\(smallImageURLPath!)" : nil
+                let fullImageURL: String? = updatedSmallImageURLPath
+                print(fullImageURL)
                 
                 let dictionary: [String: AnyObject?] = [
                     Game.Keys.Name: game[ResponseKeys.Name] as! String,
