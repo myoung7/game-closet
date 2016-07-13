@@ -23,7 +23,11 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var alreadyInCollectionLabel: UILabel!
     
     @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var removeButton: UIBarButtonItem!
     @IBOutlet weak var siteURLButton: UIButton!
+    
+    let gameDidDeleteFromCollectionNotification = "GameDidDeleteFromCollectionNotification"
+    let gameDidAddToCollectionNotification = "GameDidAddToCollectionNotification"
     
     @IBAction func giantBombURLButton() {
         UIApplication.sharedApplication().openURL(NSURL(string: GiantBombClient.Constants.GiantBombURL)!)
@@ -71,7 +75,10 @@ class GameDetailViewController: UIViewController {
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         addButton.enabled = false
         addGameToCollection()
-        changeAlreadyInCollectionLabel()
+    }
+    
+    @IBAction func removeButtonPressed(sender: UIBarButtonItem) {
+        displayRemoveConfirmationPrompt()
     }
     
     var sharedContext: NSManagedObjectContext {
@@ -84,12 +91,37 @@ class GameDetailViewController: UIViewController {
         super.viewDidLoad()
         loadGameDetails()
         setImageViewBackground()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gameObjectDeletedFromCollection), name: gameDidDeleteFromCollectionNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gameObjectAddedToCollection), name: gameDidAddToCollectionNotification, object: nil)
+        
         if gameIsInCollection {
             addButton.enabled = false
+            removeButton.enabled = true
             alreadyInCollectionLabel.hidden = false
         } else {
+            addButton.enabled = true
+            removeButton.enabled = false
             alreadyInCollectionLabel.hidden = true
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: gameDidDeleteFromCollectionNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: gameDidAddToCollectionNotification, object: nil)
+    }
+    
+    func gameObjectDeletedFromCollection() {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func gameObjectAddedToCollection() {
+        gameIsInCollection = true
+        addButton.enabled = false
+        removeButton.enabled = true
+        changeAlreadyInCollectionLabel()
     }
     
     // MARK: - Loads the details of the selected game.
@@ -155,6 +187,10 @@ class GameDetailViewController: UIViewController {
         let game = Game(dictionary: dictionary, context: sharedContext)
         game.platform = platform
         CoreDataStackManager.sharedInstance().saveContext()
+        
+        let gameAddedNotification = NSNotification(name: self.gameDidAddToCollectionNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotification(gameAddedNotification)
+        
         print("Added game to collection!")
     }
     
@@ -173,6 +209,36 @@ class GameDetailViewController: UIViewController {
             backgroundGameImageView.image = UIImage(CIImage: (gaussianBlurFilter?.outputImage)!)
             backgroundGameImageView.contentMode = .ScaleToFill
         }
+    }
+    
+    func displayRemoveConfirmationPrompt() {
+        let alertTitleString = "Remove Confirmation"
+        let alertMessageString = "Are you sure you want to remove this game from your collection?"
+        let alertController = UIAlertController(title: alertTitleString, message: alertMessageString, preferredStyle: .Alert);
+        
+        let removeActionTitleString = "Remove"
+        let removeAction = UIAlertAction(title: removeActionTitleString, style: .Destructive) { _ in
+            let gameObjectArray = self.fetchedResultsController.fetchedObjects as! [Game]
+            
+            guard let gameObject = gameObjectArray.first else {
+                print("Error: Could not delete game from collection.")
+                return
+            }
+            
+            self.sharedContext.deleteObject(gameObject)
+            CoreDataStackManager.sharedInstance().saveContext()
+            
+            let gameDeletedNotification = NSNotification(name: self.gameDidDeleteFromCollectionNotification, object: nil)
+            NSNotificationCenter.defaultCenter().postNotification(gameDeletedNotification)
+        }
+        
+        let cancelActionTitleString = "Cancel"
+        let cancelAction = UIAlertAction(title: cancelActionTitleString, style: .Cancel, handler: nil)
+        
+        alertController.addAction(removeAction)
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
 }

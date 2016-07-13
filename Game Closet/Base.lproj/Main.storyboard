@@ -509,7 +509,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1L2-c1-w2S">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="already in collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-DY-VTN">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in your collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-DY-VTN">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
                                                         <color key="backgroundColor" red="0.71764705880000002" green="0.36078431370000003" blue="0.023529411760000001" alpha="0.75923775339999999" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -615,6 +615,11 @@
                                     <action selector="addButtonPressed:" destination="pQ1-fQ-5Vg" id="SxF-9x-niI"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem systemItem="trash" id="TnT-8e-UfZ">
+                                <connections>
+                                    <action selector="removeButtonPressed:" destination="pQ1-fQ-5Vg" id="FAS-5Y-m2B"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="action" id="ffZ-ee-c2V">
                                 <connections>
                                     <action selector="shareButtonPressed:" destination="pQ1-fQ-5Vg" id="x8t-c3-T9s"/>
@@ -628,6 +633,7 @@
                         <outlet property="backgroundGameImageView" destination="1rh-lC-URe" id="raV-LQ-pBZ"/>
                         <outlet property="gameImageView" destination="vo0-hw-TCz" id="PbB-fs-IAs"/>
                         <outlet property="gameInfoLabel" destination="Y0G-te-Mgp" id="zb9-qv-a8S"/>
+                        <outlet property="removeButton" destination="TnT-8e-UfZ" id="bJf-fa-dsu"/>
                         <outlet property="siteURLButton" destination="D03-DN-sYY" id="WV1-Ao-eev"/>
                     </connections>
                 </viewController>

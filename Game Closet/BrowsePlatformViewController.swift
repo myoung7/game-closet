@@ -1,5 +1,5 @@
 //
-//  BrowseViewController.swift
+//  BrowsePlatformViewController.swift
 //  Game Closet
 //
 //  Created by Matthew Young on 4/3/16.
