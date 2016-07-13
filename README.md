@@ -22,7 +22,7 @@ NOTE: You'll need your own Giant Bomb API Key.
 Currently in a beta stage.
 
 ## Known Issues
-- Auto Layout Constraints breaking in the debug for the Game List Cells. Images are laid out correctly, but need to fix the error.
--Even if all games are removed for a particular platform, the platform still appears in the BrowsePlatformViewController.
+- Even if all games are removed for a particular platform, the platform still appears in the BrowsePlatformViewController.
+- Data size of app increases without adding games to collection.
 
 **API Database created and hosted by Giant Bomb http://www.giantbomb.com/**
