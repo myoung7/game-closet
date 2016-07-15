@@ -24,5 +24,6 @@ Currently in a beta stage.
 ## Known Issues
 - Even if all games are removed for a particular platform, the platform still appears in the BrowsePlatformViewController.
 - Data size of app increases without adding games to collection.
+- Adding game to collection after searching online and then attempting to remove game will not remove game from collection.
 
 **API Database created and hosted by Giant Bomb http://www.giantbomb.com/**

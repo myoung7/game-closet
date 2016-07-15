@@ -134,14 +134,23 @@ class GameDetailViewController: UIViewController {
     
     func loadGameDetails() {
         
-        navigationItem.title = currentGame.name
+        let titleLabel = UILabel(frame: CGRectMake(0, 0, 440, 44))
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.whiteColor()
+        
+        
+        
+        titleLabel.text = currentGame.name
+        
+        navigationItem.titleView = titleLabel
         
         gameInfoLabel.text = currentGame.info
-        siteURLButton.setTitle(currentGame.siteURL, forState: .Normal)
         
         guard currentGame.gameImage == nil else {
             gameImageView.image = currentGame.gameImage
             return
+            
         }
         
         guard let imageURL = currentGame.imageURL else {

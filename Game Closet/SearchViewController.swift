@@ -54,8 +54,9 @@ class SearchViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     //MARK: - Picker View Delegate Methods
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return platformNamesArray[row]
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let platformString = platformNamesArray[row]
+        return NSAttributedString(string: platformString, attributes: [NSForegroundColorAttributeName:UIColor(red: (168.0 / 255.0), green: (127.0 / 255.0), blue: (67.0 / 255.0), alpha: 1)])
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
