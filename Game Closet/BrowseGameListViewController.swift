@@ -80,12 +80,9 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
         
         if !searchSeguePerformed {
             
-            print(selectedPlatform.name)
-            
             try! fetchedResultsController.performFetch()
             
             if let objects = fetchedResultsController.fetchedObjects as? [Game] {
-                print(objects)
                 gameList = objects
                 print("Got game objects!")
                 gameListTableView.reloadData()
@@ -200,7 +197,8 @@ class BrowseGameListViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gameSelectedSegue" {
-            let controller = segue.destinationViewController as! GameDetailViewController
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.viewControllers.first as! GameDetailViewController
             controller.currentGame = selectedGame
         }
     }

@@ -117,7 +117,7 @@
                             <outletCollection property="gestureRecognizers" destination="jUn-U7-PTk" appends="YES" id="Iy6-gS-6ur"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="rkk-wY-xPn"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="rkk-wY-xPn"/>
                     <navigationItem key="navigationItem" title="Search" id="cFT-qd-TVa"/>
                     <connections>
                         <outlet property="greyLoadingView" destination="jKz-vA-a8G" id="aa6-Ja-BFv"/>
@@ -154,6 +154,20 @@
             </objects>
             <point key="canvasLocation" x="900" y="-27"/>
         </scene>
+        <!--Split View Controller-->
+        <scene sceneID="ulW-F0-iI0">
+            <objects>
+                <splitViewController id="uGB-Z5-7GL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="TSg-ys-Pm6"/>
+                    <connections>
+                        <segue destination="8PN-Cp-VJl" kind="relationship" relationship="masterViewController" id="tmN-on-F41"/>
+                        <segue destination="enW-tK-rgQ" kind="relationship" relationship="detailViewController" id="GGG-tt-iM6"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oQG-Pv-7u7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="782"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pne-Ly-XHc">
             <objects>
@@ -171,7 +185,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Dn-st-haX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="782"/>
+            <point key="canvasLocation" x="1638" y="782"/>
         </scene>
         <!--Platform-->
         <scene sceneID="O1s-Aq-6T2">
@@ -422,12 +436,29 @@
                         <outlet property="editButton" destination="XrP-pc-ZuT" id="usR-Vk-u4z"/>
                         <outlet property="gameListTableView" destination="2MW-bx-4Cz" id="tsG-P7-G9n"/>
                         <outlet property="greyLoadingView" destination="jKz-vA-a8G" id="sK6-mr-cfp"/>
-                        <segue destination="pQ1-fQ-5Vg" kind="show" identifier="gameSelectedSegue" id="AeF-uT-pHr"/>
+                        <segue destination="enW-tK-rgQ" kind="showDetail" identifier="gameSelectedSegue" id="1hX-oy-BYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYc-A7-iuQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3134" y="356"/>
+            <point key="canvasLocation" x="3518" y="356"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Ym-nZ-HJA">
+            <objects>
+                <navigationController id="enW-tK-rgQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="SvH-KC-hhx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.66274509800000003" green="0.52941176469999995" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pQ1-fQ-5Vg" kind="relationship" relationship="rootViewController" id="Lqi-46-JFF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5c4-XQ-1eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3278" y="1544"/>
         </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="fKa-u8-jl9">
@@ -442,19 +473,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="srt-BE-54g">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="F6B-5c-RHC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="244"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="506-lM-eKe">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="244"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="265" verticalCompressionResistancePriority="740" translatesAutoresizingMaskIntoConstraints="NO" id="1rh-lC-URe" userLabel="Background Game Image View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="244"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="265" verticalCompressionResistancePriority="740" translatesAutoresizingMaskIntoConstraints="NO" id="vo0-hw-TCz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="244"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                                         <color key="backgroundColor" red="0.96862745100000003" green="0.95294117649999999" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </imageView>
                                                 </subviews>
@@ -473,7 +504,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="760" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fQj-78-3ON">
-                                        <rect key="frame" x="0.0" y="243" width="600" height="244"/>
+                                        <rect key="frame" x="0.0" y="268" width="600" height="268"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1L2-c1-w2S">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
@@ -491,13 +522,13 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3Bp-N6-pLt">
-                                                <rect key="frame" x="0.0" y="25" width="600" height="174"/>
+                                                <rect key="frame" x="0.0" y="25" width="600" height="198"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-4P-4Zm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="174"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="198"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" text="Video Game description. This is about the game you are viewing. It is quite good." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Y0G-te-Mgp">
-                                                                <rect key="frame" x="10" y="0.0" width="580" height="174"/>
+                                                                <rect key="frame" x="10" y="0.0" width="580" height="198"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="fh5-hG-w86"/>
                                                                 </constraints>
@@ -523,7 +554,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="784" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dLz-4o-Dck">
-                                                <rect key="frame" x="0.0" y="198" width="600" height="20"/>
+                                                <rect key="frame" x="0.0" y="223" width="600" height="20"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D03-DN-sYY">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
@@ -541,7 +572,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P2c-hk-RFe">
-                                                <rect key="frame" x="0.0" y="218" width="600" height="25"/>
+                                                <rect key="frame" x="0.0" y="243" width="600" height="25"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzH-sL-fIu">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
@@ -561,30 +592,56 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal" distribution="fillEqually"/>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuV-Bf-HHf">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a game from your current collection or search for new games!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S0-kD-v2P">
+                                        <rect key="frame" x="150" y="243" width="300" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="L3J-N4-mlA"/>
+                                            <constraint firstAttribute="width" constant="300" id="e5q-Qo-jDC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4S0-kD-v2P" firstAttribute="centerY" secondItem="NuV-Bf-HHf" secondAttribute="centerY" id="LYj-ng-Xa0"/>
+                                    <constraint firstItem="4S0-kD-v2P" firstAttribute="centerX" secondItem="NuV-Bf-HHf" secondAttribute="centerX" id="XnX-s6-TXJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="srt-BE-54g" firstAttribute="top" secondItem="iH6-Ty-neF" secondAttribute="bottom" id="3Aa-X8-TA5"/>
+                            <constraint firstItem="onJ-bW-1ZM" firstAttribute="top" secondItem="NuV-Bf-HHf" secondAttribute="bottom" id="EXo-pO-R3V"/>
                             <constraint firstAttribute="trailing" secondItem="srt-BE-54g" secondAttribute="trailing" id="Ehe-sG-qna"/>
+                            <constraint firstItem="NuV-Bf-HHf" firstAttribute="top" secondItem="iH6-Ty-neF" secondAttribute="bottom" id="Jky-tH-r2k"/>
                             <constraint firstItem="srt-BE-54g" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leading" id="WwL-kU-3Js"/>
+                            <constraint firstAttribute="trailing" secondItem="NuV-Bf-HHf" secondAttribute="trailing" id="gbj-pw-BXr"/>
                             <constraint firstItem="onJ-bW-1ZM" firstAttribute="top" secondItem="srt-BE-54g" secondAttribute="bottom" id="nwj-il-0vG"/>
+                            <constraint firstItem="NuV-Bf-HHf" firstAttribute="leading" secondItem="7iM-nK-Y8j" secondAttribute="leading" id="wts-Nk-QZ3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Title" id="eTe-HP-kg3">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="ffW-bY-Et6">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="addButtonPressed:" destination="pQ1-fQ-5Vg" id="SxF-9x-niI"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="trash" id="TnT-8e-UfZ">
+                                <color key="tintColor" red="0.59359402859999999" green="0.30001435580000002" blue="0.0181542531" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="removeButtonPressed:" destination="pQ1-fQ-5Vg" id="FAS-5Y-m2B"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="action" id="ffZ-ee-c2V">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="shareButtonPressed:" destination="pQ1-fQ-5Vg" id="x8t-c3-T9s"/>
                                 </connections>
@@ -595,15 +652,17 @@
                         <outlet property="addButton" destination="ffW-bY-Et6" id="GMH-v7-jHF"/>
                         <outlet property="alreadyInCollectionLabel" destination="zbl-DY-VTN" id="MJm-xl-gtf"/>
                         <outlet property="backgroundGameImageView" destination="1rh-lC-URe" id="raV-LQ-pBZ"/>
+                        <outlet property="defaultView" destination="NuV-Bf-HHf" id="Bm2-LH-7xR"/>
                         <outlet property="gameImageView" destination="vo0-hw-TCz" id="PbB-fs-IAs"/>
                         <outlet property="gameInfoLabel" destination="Y0G-te-Mgp" id="zb9-qv-a8S"/>
                         <outlet property="removeButton" destination="TnT-8e-UfZ" id="bJf-fa-dsu"/>
+                        <outlet property="shareButton" destination="ffZ-ee-c2V" id="zQ6-n1-jLG"/>
                         <outlet property="siteURLButton" destination="D03-DN-sYY" id="WV1-Ao-eev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1St-Z9-6Wv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3976" y="356"/>
+            <point key="canvasLocation" x="4088" y="1544"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hKj-kA-J3p">
@@ -623,7 +682,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="gck-oJ-H8s" kind="relationship" relationship="viewControllers" id="6AC-Fh-R0d"/>
-                        <segue destination="8PN-Cp-VJl" kind="relationship" relationship="viewControllers" id="fVJ-GW-5kk"/>
+                        <segue destination="uGB-Z5-7GL" kind="relationship" relationship="viewControllers" id="m1G-Zg-Ouv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfM-ce-4hL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -633,5 +692,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="VBd-Db-Xhd"/>
+        <segue reference="1hX-oy-BYe"/>
     </inferredMetricsTieBreakers>
 </document>

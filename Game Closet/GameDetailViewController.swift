@@ -16,6 +16,8 @@ class GameDetailViewController: UIViewController {
     
     var currentGame: Game!
     
+    @IBOutlet weak var defaultView: UIView!
+    
     @IBOutlet weak var gameImageView: UIImageView!
     @IBOutlet weak var backgroundGameImageView: UIImageView!
 
@@ -24,6 +26,7 @@ class GameDetailViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var removeButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var siteURLButton: UIButton!
     
     let gameDidDeleteFromCollectionNotification = "GameDidDeleteFromCollectionNotification"
@@ -89,20 +92,27 @@ class GameDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadGameDetails()
-        setImageViewBackground()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gameObjectDeletedFromCollection), name: gameDidDeleteFromCollectionNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gameObjectAddedToCollection), name: gameDidAddToCollectionNotification, object: nil)
-        
-        if gameIsInCollection {
-            addButton.enabled = false
-            removeButton.enabled = true
-            alreadyInCollectionLabel.hidden = false
+        if currentGame != nil {
+            defaultView.hidden = true
+            loadGameDetails()
+            setImageViewBackground()
+            
+            shareButton.enabled = true
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gameObjectDeletedFromCollection), name: gameDidDeleteFromCollectionNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gameObjectAddedToCollection), name: gameDidAddToCollectionNotification, object: nil)
+            
+            if gameIsInCollection {
+                addButton.enabled = false
+                removeButton.enabled = true
+                alreadyInCollectionLabel.hidden = false
+            } else {
+                addButton.enabled = true
+                removeButton.enabled = false
+                alreadyInCollectionLabel.hidden = true
+            }
         } else {
-            addButton.enabled = true
-            removeButton.enabled = false
-            alreadyInCollectionLabel.hidden = true
+            loadDefaultView()
         }
     }
     
@@ -130,6 +140,14 @@ class GameDetailViewController: UIViewController {
         UIView.animateWithDuration(1) { 
             self.alreadyInCollectionLabel.hidden = !self.alreadyInCollectionLabel.hidden
         }
+    }
+    
+    func loadDefaultView() {
+        defaultView.hidden = false
+        
+        addButton.enabled = false
+        removeButton.enabled = false
+        shareButton.enabled = false
     }
     
     func loadGameDetails() {
